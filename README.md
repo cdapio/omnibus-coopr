@@ -1,7 +1,7 @@
-# loom-provisioner Omnibus project
+# loom Omnibus project
 
 This project creates full-stack platform-specific packages for
-`loom-provisioner`!
+`loom-provisioner`, `loom-server`, `loom-ui`, and `loom-standalone`!
 
 ## Installation
 
@@ -19,7 +19,7 @@ $ bundle install --binstubs
 You create a platform-specific package using the `build project` command:
 
 ```shell
-$ bin/omnibus build project loom-provisioner
+$ bin/omnibus build project loom-standalone
 ```
 
 The platform/architecture type of the package created will match the platform
