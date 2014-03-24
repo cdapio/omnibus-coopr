@@ -49,30 +49,31 @@ Vagrant.configure('2') do |config|
 
   config.vm.synced_folder host_project_path, guest_project_path
 
-  # prepare VM to be an Omnibus builder
-  config.vm.provision :chef_solo do |chef|
-    chef.json = {
-      'omnibus' => {
-        'build_user' => 'vagrant',
-        'build_dir' => guest_project_path,
-        'install_dir' => "/opt/loom"
-      }
-    }
-
-    chef.run_list = [
-      'recipe[omnibus::default]',
-      'recipe[java::default]',
-      'recipe[maven::default]'
-    ]
-  end
-
   project_names.each do |project_name|
+
+    # prepare VM to be an Omnibus builder
+    config.vm.provision :chef_solo do |chef|
+      chef.json = {
+        'omnibus' => {
+          'build_user' => 'vagrant',
+          'build_dir' => guest_project_path,
+          'install_dir' => "/opt/loom"
+        }
+      }
+
+      chef.run_list = [
+        'recipe[omnibus::default]',
+        'recipe[java::default]',
+        'recipe[maven::default]'
+      ]
+    end
 
     config.vm.provision :shell, :inline => <<-OMNIBUS_BUILD
       export PATH=/usr/local/bin:/usr/local/maven-3.1.1/bin:$PATH
       cd #{guest_project_path}
       su vagrant -c "bundle install --binstubs"
       su vagrant -c "bin/omnibus build project #{project_name}"
+      rm -rf /opt/loom
     OMNIBUS_BUILD
 
   end
