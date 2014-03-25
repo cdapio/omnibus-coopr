@@ -17,6 +17,7 @@ dependency "preparation"
 dependency "loom-provisioner"
 dependency "loom-server"
 dependency "loom-ui"
+dependency "loom-standalone"
 
 # version manifest file
 dependency "version-manifest"
