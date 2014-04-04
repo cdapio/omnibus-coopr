@@ -6,7 +6,7 @@ relative_path 'standalone'
 
 build do
   command "mkdir -p #{install_dir}/bin"
-  command "cp -fpPR bin/loom.sh #{install_dir}/bin"
+  command "cp -fpPR standalone/bin/loom.sh #{install_dir}/bin"
   %w[ provisioner server ui ].each do |c|
     command "ln -sf #{install_dir}/#{c}/bin/loom-#{c}.sh #{install_dir}/bin/loom-#{c}.sh"
   end
