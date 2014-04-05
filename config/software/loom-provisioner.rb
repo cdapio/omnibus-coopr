@@ -13,8 +13,8 @@ source :git => "git://github.com/continuuity/loom.git"
 relative_path 'provisioner'
 
 build do
-  gem "install knife-joyent --no-rdoc --no-ri --version 0.3.2"
-  gem "install knife-rackspace --no-rdoc --no-ri --version 0.8.4"
+  gem "install knife-joyent --no-rdoc --no-ri --version 0.4.8"
+  gem "install knife-rackspace --no-rdoc --no-ri --version 0.9.1"
   gem "install knife-openstack --no-rdoc --no-ri --version 0.8.1"
   command "mkdir -p #{install_dir}/provisioner/bin"
   command "sed -e 's:provisioner/embedded/bin:embedded/bin:g' bin/loom-provisioner.sh > #{install_dir}/provisioner/bin/loom-provisioner.sh"
