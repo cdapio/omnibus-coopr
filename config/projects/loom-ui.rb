@@ -17,7 +17,7 @@ dependency "preparation"
 dependency "loom-ui"
 
 # version manifest file
-dependency "version-manifest"
+#dependency "version-manifest"
 
 exclude "\.git*"
 exclude "bundler\/git"
