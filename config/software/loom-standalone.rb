@@ -10,4 +10,5 @@ build do
   %w[ provisioner server ui ].each do |c|
     command "ln -sf #{install_dir}/#{c}/bin/loom-#{c}.sh #{install_dir}/bin/loom-#{c}.sh"
   end
+  command "chmod +x #{install_dir}/bin/*"
 end
