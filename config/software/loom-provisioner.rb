@@ -20,6 +20,7 @@ build do
   command "sed -e 's:provisioner/embedded/bin:embedded/bin:g' bin/loom-provisioner.sh > #{install_dir}/provisioner/bin/loom-provisioner.sh"
   command "cp -fpPR provisioner #{install_dir}"
   command "sed -e 's/APP_NAME/loom-provisioner/g' -e 's/SVC_NAME/provisioner/g' bin/loom-service > #{install_dir}/provisioner/bin/init-loom-provisioner"
+  command "chmod +x #{install_dir}/provisioner/bin/*"
   command "mkdir -p #{install_dir}/provisioner/etc/logrotate.d"
   command "cp -f distribution/etc/logrotate.d/loom-provisioner #{install_dir}/provisioner/etc/logrotate.d"
   gem "uninstall fog -v1.20.0"
