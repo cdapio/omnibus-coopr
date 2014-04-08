@@ -10,7 +10,7 @@ end
 host_project_path = File.expand_path('..', __FILE__)
 guest_project_path = "/home/vagrant/#{File.basename(host_project_path)}"
 master_project = 'loom'
-project_names = [ 'loom-provisioner', 'loom-server', 'loom-ui' ]
+project_names = [ 'loom-provisioner', 'loom-server', 'loom-ui', 'loom-standalone' ]
 
 Vagrant.configure('2') do |config|
 
@@ -38,7 +38,7 @@ Vagrant.configure('2') do |config|
   end
 
   # Ensure a recent version of the Chef Omnibus packages are installed
-  config.omnibus.chef_version = '11.6.2'
+  config.omnibus.chef_version = '11.4.0'
 
   # Enable the berkshelf-vagrant plugin
   config.berkshelf.enabled = true
