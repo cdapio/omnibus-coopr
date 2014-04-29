@@ -6,8 +6,8 @@ homepage "http://github.com/continuuity/loom"
 replaces        "loom"
 install_path    "/opt/loom"
 #build_version   Omnibus::BuildVersion.new.semver
-build_version "0.9.5"
-build_iteration 101
+build_version "0.9.6"
+build_iteration 1
 
 # creates required build directories
 dependency "preparation"
