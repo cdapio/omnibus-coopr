@@ -15,5 +15,5 @@ build do
   command "chmod +x #{install_dir}/server/bin/*"
   command "mkdir -p #{install_dir}/server/lib"
   command "cd server && PATH=/usr/local/maven-3.1.1/bin:$PATH mvn clean package assembly:single -DskipTests=true"
-  command "cp -fpPR target/loom-*jar-with-dependencies.jar #{install_dir}/server/lib"
+  command "cp -fpPR server/target/loom-*jar-with-dependencies.jar #{install_dir}/server/lib"
 end
