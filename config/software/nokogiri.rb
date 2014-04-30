@@ -16,7 +16,7 @@
 #
 
 name "nokogiri"
-default_version "1.6.1"
+default_version "1.5.11"
 
 if platform == 'windows'
   dependency "ruby-windows"
