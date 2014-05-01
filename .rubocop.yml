@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - config/software/openssl.rb
+    - config/software/nodejs.rb
+    - config/software/nokogiri.rb
+LineLength:
+  Max: 250
+HashSyntax:
+  Enabled: False
+FileName:
+  Enabled: False
