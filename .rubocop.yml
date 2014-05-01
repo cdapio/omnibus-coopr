@@ -1,5 +1,6 @@
 AllCops:
   Exclude:
+    - config/software/cacerts.rb
     - config/software/openssl.rb
     - config/software/nodejs.rb
     - config/software/nokogiri.rb
