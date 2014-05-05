@@ -1,5 +1,5 @@
 name "loom-provisioner"
-default_version "develop"
+default_version "release/0.9.7"
 
 dependency "ruby"
 dependency "rubygems"
