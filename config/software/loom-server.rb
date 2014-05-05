@@ -16,4 +16,5 @@ build do
   command "mkdir -p #{install_dir}/server/lib"
   command "cd server && PATH=/usr/local/maven-3.1.1/bin:$PATH mvn clean package assembly:single -DskipTests=true"
   command "cp -fpPR server/target/loom-*jar-with-dependencies.jar #{install_dir}/server/lib"
+  command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
 end
