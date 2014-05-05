@@ -1,9 +1,9 @@
-name "loom-ui"
-default_version "release/0.9.7"
+name 'loom-ui'
+default_version 'release/0.9.7'
 
-dependency "nodejs"
+dependency 'nodejs'
 
-source :git => "git://github.com/continuuity/loom.git"
+source :git => 'git://github.com/continuuity/loom.git'
 relative_path 'ui'
 
 build do
@@ -15,7 +15,7 @@ build do
   command "sed -e 's/APP_NAME/loom-ui/g' -e 's/SVC_NAME/ui/g' bin/loom-service > #{install_dir}/ui/bin/init-loom-ui"
   command "chmod +x #{install_dir}/ui/bin/*"
   command "cd ui && #{install_dir}/embedded/bin/node tools/r.js -o tools/build.js"
-  command "rm -rf ui/omnibus ui/build*"
+  command 'rm -rf ui/omnibus ui/build*'
   command "cp -fpPR ui #{install_dir}"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
 end
