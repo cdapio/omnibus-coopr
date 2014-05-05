@@ -23,6 +23,7 @@ build do
   command "chmod +x #{install_dir}/provisioner/bin/*"
   command "mkdir -p #{install_dir}/provisioner/etc/logrotate.d"
   command "cp -f distribution/etc/logrotate.d/loom-provisioner #{install_dir}/provisioner/etc/logrotate.d"
+  command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
   gem "uninstall fog -v1.20.0"
   gem "uninstall nokogiri -v1.6.1"
   gem "uninstall -Ix rdoc"
