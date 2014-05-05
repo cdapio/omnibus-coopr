@@ -16,8 +16,5 @@ dependency 'preparation'
 # dependency "somedep"
 dependency 'loom-server'
 
-# version manifest file
-# dependency "version-manifest"
-
 exclude "\.git*"
 exclude "bundler\/git"
