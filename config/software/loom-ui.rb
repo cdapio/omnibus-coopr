@@ -17,4 +17,5 @@ build do
   command "cd ui && #{install_dir}/embedded/bin/node tools/r.js -o tools/build.js"
   command 'rm -rf ui/omnibus ui/build*'
   command "cp -fpPR ui #{install_dir}"
+  command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
 end
