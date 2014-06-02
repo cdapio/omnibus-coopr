@@ -7,7 +7,7 @@ replaces 'loom'
 conflicts %w(loom-provisioner loom-server loom-ui)
 install_path '/opt/loom'
 # build_version   Omnibus::BuildVersion.new.semver
-build_version '0.9.6'
+build_version '0.9.7'
 build_iteration 1
 
 # creates required build directories
