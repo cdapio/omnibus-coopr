@@ -1,5 +1,5 @@
 name 'loom-ui'
-default_version 'release/0.9.7'
+default_version 'develop'
 
 dependency 'nodejs'
 
