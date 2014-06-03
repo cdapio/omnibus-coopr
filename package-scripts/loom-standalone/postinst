@@ -59,6 +59,6 @@ ln -sf /opt/loom/ui/bin/init-loom-ui /etc/init.d/loom-ui
 ln -sf /opt/loom/ui/etc/logrotate.d/loom-ui /etc/logrotate.d/loom-ui
 
 update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.dist 10
-update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.loom 10
+update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.loom 50
 
 exit 0

@@ -1,5 +1,5 @@
 name 'loom-server'
-default_version 'develop'
+default_version 'release/0.9.7'
 
 source :git => 'git://github.com/continuuity/loom.git'
 relative_path 'server'
