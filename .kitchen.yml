@@ -17,9 +17,9 @@ platforms:
 suites:
   - name: default
     run_list:
-      java::default
-      maven::default
-      omnibus::default
+      - recipe[java::default]
+      - recipe[maven::default]
+      - recipe[omnibus::default]
     attributes:
       omnibus:
         build_user:  vagrant
