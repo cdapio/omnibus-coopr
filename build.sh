@@ -2,6 +2,8 @@
 
 __usage() { echo "Usage: ${0}:"; echo "  ${0} <all|project [project] ...>"; exit 1; };
 
+vagrant destroy -f
+
 if [[ ${LOOM_BUILD_PROJECTS} ]]; then
   echo "Building ${LOOM_BUILD_PROJECTS}"
 elif [[ ${#} -eq 1 ]] && [[ ${1} == 'all' ]]; then
