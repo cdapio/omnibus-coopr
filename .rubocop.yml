@@ -4,9 +4,12 @@ AllCops:
     - config/software/openssl.rb
     - config/software/nodejs.rb
     - config/software/nokogiri.rb
+    - bin/*
 LineLength:
   Max: 250
 HashSyntax:
   Enabled: False
 FileName:
   Enabled: False
+SingleSpaceBeforeFirstArg:
+  Enabled: false

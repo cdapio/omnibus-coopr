@@ -1,0 +1,27 @@
+driver:
+  name: vagrant
+  customize:
+    cpus: 8
+    memory: 4096
+  synced_folders:
+    - ['.', '/home/vagrant/omnibus-loom']
+
+provisioner:
+  require_chef_omnibus: 11.12.4
+
+platforms:
+  - name: ubuntu-12.04
+    run_list: apt::default
+  - name: centos-6.5
+
+suites:
+  - name: default
+    run_list:
+      - recipe[java::default]
+      - recipe[maven::default]
+      - recipe[omnibus::default]
+    attributes:
+      omnibus:
+        build_user:  vagrant
+        build_dir:   /home/vagrant/omnibus-loom
+        install_dir: /opt/loom

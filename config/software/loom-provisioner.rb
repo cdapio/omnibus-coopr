@@ -7,6 +7,7 @@ dependency 'bundler'
 dependency 'zlib'
 dependency 'libxml2'
 dependency 'libxslt'
+dependency 'libffi'
 dependency 'nokogiri'
 
 source :git => 'git://github.com/continuuity/loom.git'
