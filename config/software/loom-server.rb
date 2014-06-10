@@ -7,6 +7,7 @@ relative_path 'server'
 build do
   command "mkdir -p #{install_dir}/server/bin"
   command "cp -fpPR bin/loom-server.sh #{install_dir}/server/bin"
+  command "cp -fpPR bin/loom-0.9.7-upgrade.rb #{install_dir}/server/bin"
   command "cp -fpPR docs/licenses config #{install_dir}/server"
   command "mkdir -p #{install_dir}/server/conf #{install_dir}/server/etc/logrotate.d"
   command "cp -f distribution/etc/logrotate.d/loom-server #{install_dir}/server/etc/logrotate.d"
