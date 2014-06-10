@@ -10,7 +10,9 @@ end
 host_project_path = File.expand_path('..', __FILE__)
 guest_project_path = "/home/vagrant/#{File.basename(host_project_path)}"
 master_project = 'loom'
-project_names = [ 'loom-provisioner', 'loom-server', 'loom-ui', 'loom-standalone' ]
+
+project_names = ENV['LOOM_BUILD_PROJECTS'].split if ENV['LOOM_BUILD_PROJECTS']
+project_names = %w(loom-provisioner loom-server loom-ui loom-standalone) if project_names.nil?
 
 Vagrant.configure('2') do |config|
 
