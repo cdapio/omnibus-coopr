@@ -2,17 +2,31 @@
 
 __usage() { echo "Usage: ${0}:"; echo "  ${0} <all|project [project] ...>"; exit 1; };
 
-vagrant destroy -f
-
 if [[ ${LOOM_BUILD_PROJECTS} ]]; then
-  echo "Building ${LOOM_BUILD_PROJECTS}"
+  __OUTPUT="Building ${LOOM_BUILD_PROJECTS}"
 elif [[ ${#} -eq 1 ]] && [[ ${1} == 'all' ]]; then
-  echo "Building all"
+  __OUTPUT="Building all"
 elif [[ ${#} -ge 1 ]]; then
-  echo "Building ${*}"
+  __OUTPUT="Building ${*}"
   LOOM_BUILD_PROJECTS=${*}
 else
   __usage
 fi
 
+__plugins=$(vagrant plugin list | awk '{print $1}')
+
+# Check for plugins, install if missing
+for __p in vagrant-berkshelf vagrant-omnibus ; do
+  if [[ $(echo ${__plugins} | grep ${__p}) ]]; then
+    echo "Found plugin: ${__p}"
+  else
+    echo "Installing plugin: ${__p}"
+    vagrant plugin install ${__p}
+  fi
+done
+
+echo "Destroying any running VMs..."
+vagrant destroy -f
+
+echo ${__OUTPUT}
 exec vagrant up
