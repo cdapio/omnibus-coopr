@@ -13,6 +13,9 @@ else
   __usage
 fi
 
+# export, or we won't be in the build env
+export LOOM_BUILD_PROJECTS
+
 __plugins=$(vagrant plugin list | awk '{print $1}')
 
 # Check for plugins, install if missing
