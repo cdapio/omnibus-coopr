@@ -80,7 +80,7 @@ Vagrant.configure('2') do |config|
       cd #{guest_project_path}
       gem install bundler
       su vagrant -c "bundle install --binstubs"
-      su vagrant -c "bin/omnibus build project #{project_name}"
+      su vagrant -c "bin/omnibus build #{project_name}"
       rm -rf /opt/loom
     OMNIBUS_BUILD
 
