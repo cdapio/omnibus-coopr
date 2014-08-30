@@ -23,6 +23,7 @@ if [ ! -f /etc/default/loom-provisioner ] ; then
   echo "export LOOM_SERVER_URI=http://localhost:55054" >> /etc/default/loom-provisioner
   echo "export LOOM_LOG_DIR=/var/log/loom" >> /etc/default/loom-provisioner
   echo "export LOOM_LOG_LEVEL=info" >> /etc/default/loom-provisioner
+  echo "export PROVISIONER_SITE_CONF=/etc/loom/conf/provisioner-site.xml" >> /etc/default/loom-provisioner
 fi
 
 ln -sf /opt/loom/provisioner/bin/init-loom-provisioner /etc/init.d/loom-provisioner
