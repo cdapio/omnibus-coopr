@@ -12,6 +12,7 @@ build do
   gem 'install fog --no-rdoc --no-ri --version 1.21.0'
   gem 'install sinatra --no-rdoc --no-ri --version 1.4.5'
   gem 'install thin --no-rdoc --no-ri --version 1.6.2'
+  gem 'install rest_client --no-rdoc --no-ri --version 1.7.3'
   command "mkdir -p #{install_dir}/provisioner/bin"
   command "sed -e 's:provisioner/embedded/bin:embedded/bin:g' bin/loom-provisioner.sh > #{install_dir}/provisioner/bin/loom-provisioner.sh"
   command "cp -fpPR provisioner #{install_dir}"
