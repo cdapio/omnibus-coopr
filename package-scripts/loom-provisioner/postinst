@@ -13,7 +13,7 @@ function error_exit
 }
 
 mkdir -p /var/log/loom /var/run/loom /etc/default /etc/logrotate.d
-cp /opt/loom/provisioner/master/conf/provisioner-site* /etc/loom/conf.dist
+cp -f /opt/loom/provisioner/master/conf/provisioner-site* /etc/loom/conf.dist
 chown -R loom:loom /opt/loom/provisioner
 chown -R loom:loom /var/log/loom
 chown -R loom:loom /var/run/loom
