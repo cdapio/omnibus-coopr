@@ -23,7 +23,7 @@ build do
   command "sed -e 's/APP_NAME/loom-provisioner/g' -e 's/SVC_NAME/provisioner/g' bin/loom-service > #{install_dir}/provisioner/bin/init-loom-provisioner"
   command "chmod +x #{install_dir}/provisioner/bin/*"
   command "mkdir -p #{install_dir}/provisioner/etc/logrotate.d"
-  command "cp -f distribution/etc/logrotate.d/loom-provisioner #{install_dir}/provisioner/etc/logrotate.d"
+  command "cp -f provisioner/distribution/etc/logrotate.d/loom-provisioner #{install_dir}/provisioner/etc/logrotate.d"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
   # Joyent ships with bad permissions, allow everyone to read everything
   command "chmod ugo+r #{install_dir}/embedded"
