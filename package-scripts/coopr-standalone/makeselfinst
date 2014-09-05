@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-# Install a full loom-provisioner
+# Install a full coopr-standalone
 #
 
 PROGNAME=`basename $0`
 INSTALLER_DIR=`dirname $0`
-DEST_DIR=/opt/loom-provisioner
-CONFIG_DIR=/etc/loom-provisioner
+DEST_DIR=/opt/coopr
+CONFIG_DIR=/etc/coopr
 USAGE="usage: $0"
 
 error_exit()
@@ -22,6 +22,6 @@ cp -R $INSTALLER_DIR $DEST_DIR || error_exit "Cannot install to $DEST_DIR"
 rm -f $DEST_DIR/$PROGNAME
 
 # You may want to symlink your packages bin files into /usr/bin
-# ln -sf $DEST_DIR/bin/loom-provisioner /usr/bin || error_exit "Cannot link loom-provisioner to /usr/bin"
+# ln -sf $DEST_DIR/bin/coopr-standalone /usr/bin || error_exit "Cannot link coopr-standalone to /usr/bin"
 
 exit 0

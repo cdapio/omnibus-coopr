@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Perform necessary loom-provisioner setup steps
+# Perform necessary coopr-provisioner setup steps
 # prior to installing package.
 #
 
@@ -11,7 +11,5 @@ function error_exit
   echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
   exit 1
 }
-
-update-alternatives --remove loom-conf /etc/loom/conf.dist
 
 exit 0

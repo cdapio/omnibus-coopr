@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# Perform necessary coopr-ui setup steps
+# after package is installed.
+#
+
+PROGNAME=$(basename $0)
+
+function error_exit
+{
+  echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+  exit 1
+}
+
+mkdir -p /var/log/coopr /var/run/coopr /etc/default /etc/logrotate.d
+chown -R coopr:coopr /opt/coopr/ui
+chown -R coopr:coopr /var/log/coopr
+chown -R coopr:coopr /var/run/coopr
+
+# Add defaults
+if [ ! -f /etc/default/coopr-ui ] ; then
+  echo "export COOPR_SERVER_URI=http://localhost:55054" > /etc/default/coopr-ui
+  echo "export COOPR_LOG_DIR=/var/log/coopr" >> /etc/default/coopr-ui
+  echo "export COOPR_UI_PORT=8100" >> /etc/default/coopr-ui
+fi
+
+ln -sf /opt/coopr/ui/bin/init-coopr-ui /etc/init.d/coopr-ui
+ln -sf /opt/coopr/ui/etc/logrotate.d/coopr-ui /etc/logrotate.d/coopr-ui
+
+exit 0

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Perform necessary loom-provisioner setup steps
+# Perform necessary coopr-standalone setup steps
 # prior to installing package.
 #
 
@@ -12,6 +12,6 @@ function error_exit
   exit 1
 }
 
-update-alternatives --remove loom-conf /etc/loom/conf.dist
+update-alternatives --remove coopr-conf /etc/coopr/conf.dist
 
 exit 0

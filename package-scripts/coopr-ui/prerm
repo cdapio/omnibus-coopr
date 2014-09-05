@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Perform necessary loom-provisioner setup steps
+# Perform necessary coopr-ui setup steps
 # prior to installing package.
 #
 

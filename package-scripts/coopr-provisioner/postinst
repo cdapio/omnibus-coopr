@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# Perform necessary coopr-provisioner setup steps
+# after package is installed.
+#
+
+PROGNAME=$(basename $0)
+
+function error_exit
+{
+  echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+  exit 1
+}
+
+mkdir -p /var/log/coopr /var/run/coopr /etc/default /etc/logrotate.d
+cp -f /opt/coopr/provisioner/master/conf/provisioner-site* /etc/coopr/conf.dist
+chown -R coopr:coopr /opt/coopr/provisioner
+chown -R coopr:coopr /var/log/coopr
+chown -R coopr:coopr /var/run/coopr
+
+# Add defaults
+if [ ! -f /etc/default/coopr-provisioner ] ; then
+  echo "export COOPR_NUM_WORKERS=5" > /etc/default/coopr-provisioner
+  echo "export COOPR_SERVER_URI=http://localhost:55054" >> /etc/default/coopr-provisioner
+  echo "export COOPR_LOG_DIR=/var/log/coopr" >> /etc/default/coopr-provisioner
+  echo "export COOPR_LOG_LEVEL=info" >> /etc/default/coopr-provisioner
+  echo "export PROVISIONER_SITE_CONF=/etc/coopr/conf/provisioner-site.xml" >> /etc/default/coopr-provisioner
+fi
+
+ln -sf /opt/coopr/provisioner/bin/init-coopr-provisioner /etc/init.d/coopr-provisioner
+ln -sf /opt/coopr/provisioner/etc/logrotate.d/coopr-provisioner /etc/logrotate.d/coopr-provisioner
+
+exit 0

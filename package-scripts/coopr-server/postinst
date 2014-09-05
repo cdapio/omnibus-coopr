@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# Perform necessary coopr-server setup steps
+# after package is installed.
+#
+
+PROGNAME=$(basename $0)
+
+function error_exit
+{
+  echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+  exit 1
+}
+
+mkdir -p /var/log/coopr /var/run/coopr /etc/coopr/conf.dist /etc/default /var/coopr/data /etc/logrotate.d /etc/coopr/conf.coopr
+cp /opt/coopr/server/conf/* /etc/coopr/conf.dist
+chown -R coopr:coopr /opt/coopr
+chown -R coopr:coopr /var/coopr
+chown -R coopr:coopr /var/log/coopr
+chown -R coopr:coopr /var/run/coopr
+chown -R coopr:coopr /etc/coopr/conf.dist
+chown -R coopr:coopr /etc/coopr/conf.coopr
+
+# Add defaults
+if [ ! -f /etc/default/coopr-server ] ; then
+  echo "export COOPR_LOG_DIR=/var/log/coopr" > /etc/default/coopr-server
+  echo "# Uncomment the following to enable JMX metrics for Coopr Server" >> /etc/default/coopr-server
+  echo "#export COOPR_JMX_OPTS=\"-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9010" \
+    "-Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false" \
+    "-Dcom.sun.management.jmxremote.ssl=false\"" >> /etc/default/coopr-server
+  echo "# Uncomment the following to enable verbose GC logging" >> /etc/default/coopr-server
+  echo "#export COOPR_GC_OPTS=\"-verbose:gc -Xloggc:/var/log/coopr/coopr-server.gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=1M\"" >> /etc/default/coopr-server
+  echo "# edit the following to add any other desired java options" >> /etc/default/coopr-server
+  echo "export COOPR_JAVA_OPTS=\"-XX:+UseConcMarkSweepGC -XX:+UseParNewGC \${COOPR_GC_OPTS} \${COOPR_JMX_OPTS}\"" >> /etc/default/coopr-server
+fi
+
+# Copy default configuration (first time, only)
+for i in $(cd /etc/coopr/conf.dist ; ls -1) ; do
+  if [ -e /etc/coopr/conf.coopr/${i} ] ; then
+    continue
+  else
+    cp -f /etc/coopr/conf.dist/${i} /etc/coopr/conf.coopr
+  fi
+done
+
+update-alternatives --install /etc/coopr/conf coopr-conf /etc/coopr/conf.dist 10
+update-alternatives --install /etc/coopr/conf coopr-conf /etc/coopr/conf.coopr 50
+ln -sf /opt/coopr/server/bin/init-coopr-server /etc/init.d/coopr-server
+ln -sf /opt/coopr/server/etc/logrotate.d/coopr-server /etc/logrotate.d/coopr-server
+
+exit 0

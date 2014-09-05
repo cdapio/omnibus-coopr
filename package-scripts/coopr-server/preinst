@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Perform necessary coopr-server setup steps
+# before package is installed.
+#
+
+getent group coopr >/dev/null || groupadd -r coopr
+getent passwd coopr >/dev/null || /usr/sbin/useradd --comment "Coopr User" --shell /bin/bash -M -r -g coopr --home /var/run/coopr coopr

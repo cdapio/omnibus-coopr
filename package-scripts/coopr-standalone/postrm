@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Perform necessary loom-provisioner removal steps
+# Perform necessary coopr-standalone removal steps
 # after package is uninstalled.
 #
 
