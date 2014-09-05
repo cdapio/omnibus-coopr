@@ -1,4 +1,4 @@
-# source 'https://api.berkshelf.com'
+# source 'https://supermarket.getchef.com'
 site :opscode
 
 # The apt cookbook is required to bring the apt cache up-to-date on Ubuntu

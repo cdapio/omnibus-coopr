@@ -35,12 +35,12 @@ Vagrant.configure('2') do |config|
     vb.customize [
       'modifyvm', :id,
       '--memory', '4096',
-      '--cpus', '8'
+      '--cpus', '4'
     ]
   end
 
   # Ensure a recent version of the Chef Omnibus packages are installed
-  config.omnibus.chef_version = '11.12.2'
+  config.omnibus.chef_version = :latest
 
   # Enable the berkshelf-vagrant plugin
   config.berkshelf.enabled = true
@@ -52,6 +52,11 @@ Vagrant.configure('2') do |config|
   config.vm.synced_folder host_project_path, guest_project_path
 
   project_names.each do |project_name|
+
+    # Update APT
+    config.vm.provision :shell, :inline => <<-DO_APT
+      test -x /usr/bin/apt-get && sudo apt-get update || true
+    DO_APT
 
     # prepare VM to be an Omnibus builder
     config.vm.provision :chef_solo do |chef|
@@ -73,8 +78,9 @@ Vagrant.configure('2') do |config|
     config.vm.provision :shell, :inline => <<-OMNIBUS_BUILD
       export PATH=/usr/local/bin:/usr/local/maven-3.1.1/bin:$PATH
       cd #{guest_project_path}
+      gem install bundler
       su vagrant -c "bundle install --binstubs"
-      su vagrant -c "bin/omnibus build project #{project_name}"
+      su vagrant -c "bin/omnibus build #{project_name}"
       rm -rf /opt/loom
     OMNIBUS_BUILD
 
