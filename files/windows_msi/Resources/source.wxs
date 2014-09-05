@@ -34,7 +34,7 @@
       <Directory Id="WindowsVolume">
         <!-- Service needs chef directory to be present. -->
         <Directory Id="INSTALLLOCATION" Name="opt">
-          <Directory Id="PROJECTLOCATION" Name="omnibus-loom">
+          <Directory Id="PROJECTLOCATION" Name="omnibus-coopr">
           </Directory>
         </Directory>
       </Directory>

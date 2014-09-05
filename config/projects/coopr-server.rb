@@ -1,9 +1,8 @@
-
-name 'loom-provisioner'
-maintainer 'Continuuity'
+name 'coopr-server'
+maintainer 'Cask'
 homepage 'http://github.com/continuuity/loom'
 
-install_path '/opt/loom'
+install_path '/opt/coopr'
 build_version   Omnibus::BuildVersion.semver
 # build_version '0.9.7'
 build_iteration 1
@@ -11,9 +10,9 @@ build_iteration 1
 # creates required build directories
 dependency 'preparation'
 
-# loom-provisioner dependencies/components
+# coopr-provisioner dependencies/components
 # dependency "somedep"
-dependency 'loom-provisioner'
+dependency 'coopr-server'
 
 exclude "\.git*"
 exclude "bundler\/git"

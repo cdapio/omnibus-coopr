@@ -9,10 +9,10 @@ end
 
 host_project_path = File.expand_path('..', __FILE__)
 guest_project_path = "/home/vagrant/#{File.basename(host_project_path)}"
-master_project = 'loom'
+master_project = 'coopr'
 
 project_names = ENV['LOOM_BUILD_PROJECTS'].split if ENV['LOOM_BUILD_PROJECTS']
-project_names = %w(loom-provisioner loom-server loom-ui loom-standalone) if project_names.nil?
+project_names = %w(coopr-provisioner coopr-server coopr-ui coopr-standalone) if project_names.nil?
 
 Vagrant.configure('2') do |config|
 
@@ -64,7 +64,7 @@ Vagrant.configure('2') do |config|
         'omnibus' => {
           'build_user' => 'vagrant',
           'build_dir' => guest_project_path,
-          'install_dir' => "/opt/loom"
+          'install_dir' => "/opt/coopr"
         }
       }
 
@@ -81,7 +81,7 @@ Vagrant.configure('2') do |config|
       gem install bundler
       su vagrant -c "bundle install --binstubs"
       su vagrant -c "bin/omnibus build #{project_name}"
-      rm -rf /opt/loom
+      rm -rf /opt/coopr
     OMNIBUS_BUILD
 
   end
