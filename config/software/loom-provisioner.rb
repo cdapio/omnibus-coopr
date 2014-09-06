@@ -1,4 +1,4 @@
-name loom-provisioner
+name 'loom-provisioner'
 default_version 'develop'
 
 dependency 'ruby'
