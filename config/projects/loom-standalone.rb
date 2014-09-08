@@ -1,4 +1,3 @@
-
 name 'loom-standalone'
 maintainer 'Continuuity'
 homepage 'http://github.com/continuuity/loom'
@@ -12,6 +11,9 @@ build_iteration 1
 # conflicts 'loom-provisioner'
 # conflicts 'loom-server'
 # conflicts 'loom-ui'
+
+# Version overrides
+override :nodejs, version: '0.10.26'
 
 # creates required build directories
 dependency 'preparation'

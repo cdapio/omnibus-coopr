@@ -1,4 +1,3 @@
-
 name 'loom-ui'
 maintainer 'Continuuity'
 homepage 'http://github.com/continuuity/loom'
