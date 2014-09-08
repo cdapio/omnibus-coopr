@@ -9,7 +9,7 @@ build_version   Omnibus::BuildVersion.semver
 build_iteration 1
 
 # conflict with standalone
-conflicts 'loom-standalone'
+# conflicts 'loom-standalone'
 
 # Version overrides
 override :nodejs, version: '0.10.26'

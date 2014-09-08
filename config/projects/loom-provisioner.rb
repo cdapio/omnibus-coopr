@@ -9,7 +9,7 @@ build_version   Omnibus::BuildVersion.semver
 build_iteration 1
 
 # conflict with standalone
-conflicts 'loom-standalone'
+# conflicts 'loom-standalone'
 
 # creates required build directories
 dependency 'preparation'

@@ -9,9 +9,9 @@ build_version   Omnibus::BuildVersion.semver
 build_iteration 1
 
 # conflict with non-standalone
-conflicts 'loom-provisioner'
-conflicts 'loom-server'
-conflicts 'loom-ui'
+# conflicts 'loom-provisioner'
+# conflicts 'loom-server'
+# conflicts 'loom-ui'
 
 # creates required build directories
 dependency 'preparation'
