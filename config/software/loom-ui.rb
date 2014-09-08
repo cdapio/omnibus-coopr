@@ -17,6 +17,6 @@ build do
   command "chmod +x #{install_dir}/bin/*"
   command "#{install_dir}/embedded/bin/node tools/r.js -o tools/build.js"
   delete 'omnibus build*'
-  copy "#{project_dir}/* #{install_dir}"
+  copy "#{project_dir}/*", "#{install_dir}"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
 end
