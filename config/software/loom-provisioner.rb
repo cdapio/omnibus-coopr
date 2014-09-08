@@ -14,10 +14,10 @@ build do
   gem 'install thin --no-rdoc --no-ri --version 1.6.2'
   gem 'install rest_client --no-rdoc --no-ri --version 1.7.3'
   mkdir install_dir
-  copy "#{project_dir}/*", "#{install_dir}"
+  copy "#{project_dir}/provisioner/*", "#{install_dir}"
   command "chmod +x #{install_dir}/bin/*"
   mkdir "#{install_dir}/etc/logrotate.d"
-  copy "#{project_dir}/distribution/etc/logrotate.d/loom-provisioner", "#{install_dir}/etc/logrotate.d"
+  copy "#{project_dir}/provisioner/distribution/etc/logrotate.d/loom-provisioner", "#{install_dir}/etc/logrotate.d"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
   gem 'uninstall -Ix rdoc'
 end
