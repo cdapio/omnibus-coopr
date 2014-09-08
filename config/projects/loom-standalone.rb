@@ -7,6 +7,11 @@ build_version   Omnibus::BuildVersion.semver
 # build_version '0.9.7'
 build_iteration 1
 
+# conflict with non-standalone
+# conflicts 'loom-provisioner'
+# conflicts 'loom-server'
+# conflicts 'loom-ui'
+
 # Version overrides
 override :nodejs, version: '0.10.26'
 
