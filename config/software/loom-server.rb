@@ -6,8 +6,8 @@ relative_path 'server'
 
 build do
   mkdir "#{install_dir}/server/bin"
-  copy "bin/loom-server.sh", "#{install_dir}/server/bin"
-  copy "bin/loom-0.9.7-upgrade.rb", "#{install_dir}/server/bin"
+  copy "server/bin/loom-server.sh", "#{install_dir}/server/bin"
+  copy "server/bin/loom-0.9.7-upgrade.rb", "#{install_dir}/server/bin"
   command "cp -fpPR docs/licenses config #{install_dir}/server"
   mkdir "#{install_dir}/server/etc/logrotate.d"
   copy "server/distribution/etc/logrotate.d/loom-server", "#{install_dir}/server/etc/logrotate.d"

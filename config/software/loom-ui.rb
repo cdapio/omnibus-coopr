@@ -8,7 +8,8 @@ relative_path 'ui'
 
 build do
   mkdir "#{install_dir}/ui/bin"
-  command "sed -e 's:ui/embedded/bin:embedded/bin:g' bin/loom-ui.sh > #{install_dir}/ui/bin/loom-ui.sh"
+  # command "sed -e 's:ui/embedded/bin:embedded/bin:g' bin/loom-ui.sh > #{install_dir}/ui/bin/loom-ui.sh"
+  copy "ui/bin/ui.sh", "#{install_dir}/ui/bin"
   mkdir "#{install_dir}/ui/etc/logrotate.d"
   copy "/var/cache/omnibus/src/node-v0.10.26/LICENSE", "#{install_dir}/ui/LICENSE.node"
   copy "ui/distribution/etc/logrotate.d/loom-ui", "#{install_dir}/ui/etc/logrotate.d"
