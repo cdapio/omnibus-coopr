@@ -16,6 +16,6 @@ build do
   command "chmod +x #{install_dir}/bin/*"
   mkdir "#{install_dir}/lib"
   command 'cd server; PATH=/usr/local/maven-3.1.1/bin:$PATH mvn clean package assembly:single -DskipTests=true'
-  copy "server/target/loom-*jar-with-dependencies.jar", "#{install_dir}/lib"
+  copy "#{project_dir}/server/target/loom-*jar-with-dependencies.jar", "#{install_dir}/lib"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
 end
