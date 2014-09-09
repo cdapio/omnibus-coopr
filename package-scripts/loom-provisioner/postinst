@@ -12,7 +12,7 @@ function error_exit
   exit 1
 }
 
-mkdir -p /var/log/loom /var/run/loom /etc/default /etc/logrotate.d
+mkdir -p /var/log/loom /var/run/loom /etc/default /etc/logrotate.d /etc/loom/conf.dist /etc/loom/conf.loom
 cp -f /opt/loom/provisioner/master/conf/provisioner-site* /etc/loom/conf.dist
 chown -R loom:loom /opt/loom/provisioner
 chown -R loom:loom /var/log/loom
@@ -27,6 +27,17 @@ if [ ! -f /etc/default/loom-provisioner ] ; then
   echo "export PROVISIONER_SITE_CONF=/etc/loom/conf/provisioner-site.xml" >> /etc/default/loom-provisioner
 fi
 
+# Copy default configuration (first time, only)
+for i in $(cd /etc/loom/conf.dist ; ls -1) ; do
+  if [ -e /etc/loom/conf.loom/${i} ] ; then
+    continue
+  else
+    cp -f /etc/loom/conf.dist/${i} /etc/loom/conf.loom
+  fi
+done
+
+update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.dist 10
+update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.loom 50
 ln -sf /opt/loom/provisioner/bin/init-loom-provisioner /etc/init.d/loom-provisioner
 ln -sf /opt/loom/provisioner/etc/logrotate.d/loom-provisioner /etc/logrotate.d/loom-provisioner
 
