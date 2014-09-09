@@ -39,6 +39,6 @@ done
 update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.dist 10
 update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.loom 50
 ln -sf /opt/loom/provisioner/distribution/etc/init.d/loom-provisioner /etc/init.d/loom-provisioner
-cp -f /opt/loom/provisioner/etc/logrotate.d/loom-provisioner /etc/logrotate.d/loom-provisioner
+cp -f /opt/loom/provisioner/distribution/etc/logrotate.d/loom-provisioner /etc/logrotate.d/loom-provisioner
 
 exit 0
