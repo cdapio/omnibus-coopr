@@ -1,7 +1,9 @@
 #!/bin/bash
 #
-# Perform necessary loom-provisioner removal steps
+# Perform necessary loom-ui removal steps
 # after package is uninstalled.
 #
+
+rm -f /etc/init.d/loom-ui
 
 exit 0
