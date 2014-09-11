@@ -13,11 +13,9 @@ build do
   gem 'install sinatra --no-rdoc --no-ri --version 1.4.5'
   gem 'install thin --no-rdoc --no-ri --version 1.6.2'
   gem 'install rest_client --no-rdoc --no-ri --version 1.7.3'
-  command "cp -fpPR provisioner #{install_dir}"
-  # command "sed -e 's/APP_NAME/loom-provisioner/g' -e 's/SVC_NAME/provisioner/g' bin/loom-service > #{install_dir}/provisioner/bin/init-loom-provisioner"
-  command "chmod +x #{install_dir}/provisioner/bin/*"
-  mkdir "#{install_dir}/provisioner/etc/logrotate.d"
-  copy "#{project_dir}/provisioner/distribution/etc/logrotate.d/loom-provisioner", "#{install_dir}/provisioner/etc/logrotate.d"
+  mkdir install_dir
+  copy "#{project_dir}/provisioner/*", "#{install_dir}"
+  command "chmod +x #{install_dir}/bin/*"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
   gem 'uninstall -Ix rdoc'
 end

@@ -45,7 +45,7 @@ done
 
 update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.dist 10
 update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.loom 50
-ln -sf /opt/loom/server/bin/init-loom-server /etc/init.d/loom-server
-ln -sf /opt/loom/server/etc/logrotate.d/loom-server /etc/logrotate.d/loom-server
+ln -sf /opt/loom/server/distribution/etc/init.d/loom-server /etc/init.d/loom-server
+cp -f /opt/loom/server/distribution/etc/logrotate.d/loom-server /etc/logrotate.d/loom-server
 
 exit 0

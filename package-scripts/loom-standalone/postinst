@@ -51,12 +51,12 @@ if [ ! -f /etc/default/loom-ui ] ; then
   echo "export LOOM_UI_PORT=8100" >> /etc/default/loom-ui
 fi
 
-ln -sf /opt/loom/provisioner/bin/init-loom-provisioner /etc/init.d/loom-provisioner
-ln -sf /opt/loom/provisioner/etc/logrotate.d/loom-provisioner /etc/logrotate.d/loom-provisioner
-ln -sf /opt/loom/server/bin/init-loom-server /etc/init.d/loom-server
-ln -sf /opt/loom/server/etc/logrotate.d/loom-server /etc/logrotate.d/loom-server
-ln -sf /opt/loom/ui/bin/init-loom-ui /etc/init.d/loom-ui
-ln -sf /opt/loom/ui/etc/logrotate.d/loom-ui /etc/logrotate.d/loom-ui
+ln -sf /opt/loom/provisioner/distribution/etc/init.d/loom-provisioner /etc/init.d/loom-provisioner
+ln -sf /opt/loom/server/distribution/etc/init.d/loom-server /etc/init.d/loom-server
+ln -sf /opt/loom/ui/distribution/etc/init.d/loom-ui /etc/init.d/loom-ui
+cp -f /opt/loom/provisioner/distribution/etc/logrotate.d/loom-provisioner /etc/logrotate.d/loom-provisioner
+cp -f /opt/loom/server/distribution/etc/logrotate.d/loom-server /etc/logrotate.d/loom-server
+cp -f /opt/loom/ui/distribution/etc/logrotate.d/loom-ui /etc/logrotate.d/loom-ui
 
 update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.dist 10
 update-alternatives --install /etc/loom/conf loom-conf /etc/loom/conf.loom 50

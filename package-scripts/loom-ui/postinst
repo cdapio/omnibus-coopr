@@ -24,7 +24,7 @@ if [ ! -f /etc/default/loom-ui ] ; then
   echo "export LOOM_UI_PORT=8100" >> /etc/default/loom-ui
 fi
 
-ln -sf /opt/loom/ui/bin/init-loom-ui /etc/init.d/loom-ui
-ln -sf /opt/loom/ui/etc/logrotate.d/loom-ui /etc/logrotate.d/loom-ui
+ln -sf /opt/loom/ui/distribution/etc/init.d/loom-ui /etc/init.d/loom-ui
+cp -f /opt/loom/ui/distribution/etc/logrotate.d/loom-ui /etc/logrotate.d/loom-ui
 
 exit 0
