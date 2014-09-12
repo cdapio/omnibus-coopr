@@ -2,19 +2,19 @@
 
 __usage() { echo "Usage: ${0}:"; echo "  ${0} <all|project [project] ...>"; exit 1; };
 
-if [[ ${LOOM_BUILD_PROJECTS} ]]; then
-  __OUTPUT="Building ${LOOM_BUILD_PROJECTS}"
+if [[ ${COOPR_BUILD_PROJECTS} ]]; then
+  __OUTPUT="Building ${COOPR_BUILD_PROJECTS}"
 elif [[ ${#} -eq 1 ]] && [[ ${1} == 'all' ]]; then
   __OUTPUT="Building all"
 elif [[ ${#} -ge 1 ]]; then
   __OUTPUT="Building ${*}"
-  LOOM_BUILD_PROJECTS=${*}
+  COOPR_BUILD_PROJECTS=${*}
 else
   __usage
 fi
 
 # export, or we won't be in the build env
-export LOOM_BUILD_PROJECTS
+export COOPR_BUILD_PROJECTS
 
 __plugins=$(vagrant plugin list | awk '{print $1}')
 
