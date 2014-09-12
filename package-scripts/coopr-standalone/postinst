@@ -28,15 +28,15 @@ for i in $(cd /etc/coopr/conf.dist ; ls -1) ; do
 done
 
 # Add /etc/default files
-if [ ! -f /etc/default/coopr-standalone ] ; then
-  echo "export COOPR_NUM_WORKERS=5" > /etc/default/coopr-standalone
-  echo "export COOPR_SERVER_URI=http://localhost:55054" >> /etc/default/coopr-standalone
-  echo "export COOPR_LOG_DIR=/var/log/coopr" >> /etc/default/coopr-standalone
-  echo "export COOPR_LOG_LEVEL=info" >> /etc/default/coopr-standalone
+if [ ! -f /etc/default/coopr-provisioner ] ; then
+  echo "export COOPR_NUM_WORKERS=5" > /etc/default/coopr-provisioner
+  echo "export COOPR_SERVER_URI=http://localhost:55054" >> /etc/default/coopr-provisioner
+  echo "export COOPR_LOG_DIR=/var/log/coopr" >> /etc/default/coopr-provisioner
+  echo "export COOPR_LOG_LEVEL=info" >> /etc/default/coopr-provisioner
 fi
 if [ ! -f /etc/default/coopr-server ] ; then
   echo "export COOPR_LOG_DIR=/var/log/coopr" > /etc/default/coopr-server
-  echo "# Uncomment the following to enable JMX metrics for Coopr Server" >> /etc/default/coopr-server
+  echo "# Uncomment the following to enable JMX metrics for Loom Server" >> /etc/default/coopr-server
   echo "#export COOPR_JMX_OPTS=\"-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9010" \
     "-Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false" \
     "-Dcom.sun.management.jmxremote.ssl=false\"" >> /etc/default/coopr-server
@@ -51,12 +51,12 @@ if [ ! -f /etc/default/coopr-ui ] ; then
   echo "export COOPR_UI_PORT=8100" >> /etc/default/coopr-ui
 fi
 
-ln -sf /opt/coopr/standalone/bin/init-coopr-standalone /etc/init.d/coopr-standalone
-ln -sf /opt/coopr/standalone/etc/logrotate.d/coopr-standalone /etc/logrotate.d/coopr-standalone
-ln -sf /opt/coopr/server/bin/init-coopr-server /etc/init.d/coopr-server
-ln -sf /opt/coopr/server/etc/logrotate.d/coopr-server /etc/logrotate.d/coopr-server
-ln -sf /opt/coopr/ui/bin/init-coopr-ui /etc/init.d/coopr-ui
-ln -sf /opt/coopr/ui/etc/logrotate.d/coopr-ui /etc/logrotate.d/coopr-ui
+ln -sf /opt/coopr/provisioner/distribution/etc/init.d/coopr-provisioner /etc/init.d/coopr-provisioner
+ln -sf /opt/coopr/server/distribution/etc/init.d/coopr-server /etc/init.d/coopr-server
+ln -sf /opt/coopr/ui/distribution/etc/init.d/coopr-ui /etc/init.d/coopr-ui
+cp -f /opt/coopr/provisioner/distribution/etc/logrotate.d/coopr-provisioner /etc/logrotate.d/coopr-provisioner
+cp -f /opt/coopr/server/distribution/etc/logrotate.d/coopr-server /etc/logrotate.d/coopr-server
+cp -f /opt/coopr/ui/distribution/etc/logrotate.d/coopr-ui /etc/logrotate.d/coopr-ui
 
 update-alternatives --install /etc/coopr/conf coopr-conf /etc/coopr/conf.dist 10
 update-alternatives --install /etc/coopr/conf coopr-conf /etc/coopr/conf.coopr 50

@@ -12,7 +12,7 @@ function error_exit
   exit 1
 }
 
-mkdir -p /var/log/coopr /var/run/coopr /etc/default /etc/logrotate.d
+mkdir -p /var/log/coopr /var/run/coopr /etc/default /etc/logrotate.d /etc/coopr/conf.dist /etc/coopr/conf.coopr
 cp -f /opt/coopr/provisioner/master/conf/provisioner-site* /etc/coopr/conf.dist
 chown -R coopr:coopr /opt/coopr/provisioner
 chown -R coopr:coopr /var/log/coopr
@@ -27,7 +27,18 @@ if [ ! -f /etc/default/coopr-provisioner ] ; then
   echo "export PROVISIONER_SITE_CONF=/etc/coopr/conf/provisioner-site.xml" >> /etc/default/coopr-provisioner
 fi
 
-ln -sf /opt/coopr/provisioner/bin/init-coopr-provisioner /etc/init.d/coopr-provisioner
-ln -sf /opt/coopr/provisioner/etc/logrotate.d/coopr-provisioner /etc/logrotate.d/coopr-provisioner
+# Copy default configuration (first time, only)
+for i in $(cd /etc/coopr/conf.dist ; ls -1) ; do
+  if [ -e /etc/coopr/conf.coopr/${i} ] ; then
+    continue
+  else
+    cp -f /etc/coopr/conf.dist/${i} /etc/coopr/conf.coopr
+  fi
+done
+
+update-alternatives --install /etc/coopr/conf coopr-conf /etc/coopr/conf.dist 10
+update-alternatives --install /etc/coopr/conf coopr-conf /etc/coopr/conf.coopr 50
+ln -sf /opt/coopr/provisioner/distribution/etc/init.d/coopr-provisioner /etc/init.d/coopr-provisioner
+cp -f /opt/coopr/provisioner/distribution/etc/logrotate.d/coopr-provisioner /etc/logrotate.d/coopr-provisioner
 
 exit 0

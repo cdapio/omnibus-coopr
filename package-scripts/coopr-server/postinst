@@ -24,7 +24,7 @@ chown -R coopr:coopr /etc/coopr/conf.coopr
 # Add defaults
 if [ ! -f /etc/default/coopr-server ] ; then
   echo "export COOPR_LOG_DIR=/var/log/coopr" > /etc/default/coopr-server
-  echo "# Uncomment the following to enable JMX metrics for Coopr Server" >> /etc/default/coopr-server
+  echo "# Uncomment the following to enable JMX metrics for Loom Server" >> /etc/default/coopr-server
   echo "#export COOPR_JMX_OPTS=\"-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9010" \
     "-Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false" \
     "-Dcom.sun.management.jmxremote.ssl=false\"" >> /etc/default/coopr-server
@@ -45,7 +45,7 @@ done
 
 update-alternatives --install /etc/coopr/conf coopr-conf /etc/coopr/conf.dist 10
 update-alternatives --install /etc/coopr/conf coopr-conf /etc/coopr/conf.coopr 50
-ln -sf /opt/coopr/server/bin/init-coopr-server /etc/init.d/coopr-server
-ln -sf /opt/coopr/server/etc/logrotate.d/coopr-server /etc/logrotate.d/coopr-server
+ln -sf /opt/coopr/server/distribution/etc/init.d/coopr-server /etc/init.d/coopr-server
+cp -f /opt/coopr/server/distribution/etc/logrotate.d/coopr-server /etc/logrotate.d/coopr-server
 
 exit 0
