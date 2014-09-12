@@ -13,6 +13,7 @@ build do
   gem 'install sinatra --no-rdoc --no-ri --version 1.4.5'
   gem 'install thin --no-rdoc --no-ri --version 1.6.2'
   gem 'install rest_client --no-rdoc --no-ri --version 1.7.3'
+  gem 'install google-api-client --no-rdoc --no-ri --version 0.7.1'
   mkdir install_dir
   copy "#{project_dir}/provisioner/*", "#{install_dir}"
   command "chmod +x #{install_dir}/bin/*"
