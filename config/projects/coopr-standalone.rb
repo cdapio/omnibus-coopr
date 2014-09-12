@@ -1,11 +1,19 @@
 name 'coopr-standalone'
 maintainer 'Cask'
-homepage 'http://github.com/continuuity/loom'
+homepage 'http://github.com/caskco/coopr'
 
-install_path '/opt/coopr'
+install_dir '/opt/coopr'
 build_version   Omnibus::BuildVersion.semver
 # build_version '0.9.7'
 build_iteration 1
+
+# conflict with non-standalone
+# conflicts 'coopr-provisioner'
+# conflicts 'coopr-server'
+# conflicts 'coopr-ui'
+
+# Version overrides
+override :nodejs, version: '0.10.26'
 
 # creates required build directories
 dependency 'preparation'

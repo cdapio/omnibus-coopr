@@ -4,4 +4,6 @@
 # after package is uninstalled.
 #
 
+rm -f /etc/init.d/coopr-server
+
 exit 0
