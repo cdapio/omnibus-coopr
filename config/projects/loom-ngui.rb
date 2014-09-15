@@ -1,5 +1,5 @@
 name 'loom-ngui'
-maintainer 'Cask'
+maintainer 'Continuuity'
 homepage 'http://github.com/continuuity/loom'
 
 install_dir '/opt/loom/ngui'
