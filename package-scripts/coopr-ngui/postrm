@@ -4,6 +4,4 @@
 # after package is uninstalled.
 #
 
-rm -f /etc/init.d/coopr-ngui
-
 exit 0
