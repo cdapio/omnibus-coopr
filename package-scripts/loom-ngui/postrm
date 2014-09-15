@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Perform necessary loom-ngui removal steps
+# after package is uninstalled.
+#
+
+rm -f /etc/init.d/loom-ngui
+
+exit 0

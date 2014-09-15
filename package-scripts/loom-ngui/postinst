@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# Perform necessary loom-ngui setup steps
+# after package is installed.
+#
+
+PROGNAME=$(basename $0)
+
+function error_exit
+{
+  echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+  exit 1
+}
+
+mkdir -p /var/log/loom /var/run/loom /etc/default /etc/logrotate.d
+chown -R loom:loom /opt/loom/ngui
+chown -R loom:loom /var/log/loom
+chown -R loom:loom /var/run/loom
+
+# Add defaults
+if [ ! -f /etc/default/loom-ngui ] ; then
+  echo "export COOPR_SERVER_URI=http://localhost:55054" > /etc/default/loom-ngui
+  echo "export COOPR_LOG_DIR=/var/log/loom" >> /etc/default/loom-ngui
+  echo "export COOPR_UI_PORT=8100" >> /etc/default/loom-ngui
+fi
+
+ln -sf /opt/loom/ngui/distribution/etc/init.d/loom-ngui /etc/init.d/loom-ngui
+cp -f /opt/loom/ngui/distribution/etc/logrotate.d/loom-ngui /etc/logrotate.d/loom-ngui
+
+exit 0
