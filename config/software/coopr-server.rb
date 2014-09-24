@@ -7,8 +7,9 @@ relative_path 'coopr-server'
 build do
   mkdir "#{install_dir}/bin"
   copy "#{project_dir}/coopr-server/bin/*", "#{install_dir}/bin"
-  command "cp -fpPR #{project_dir}/docs/licenses #{project_dir}/config #{install_dir}"
+  copy "#{project_dir}/coopr-docs/licenses", "#{install_dir}"
   copy "#{project_dir}/coopr-server/distribution", "#{install_dir}"
+  copy "#{project_dir}/coopr-server/config", "#{install_dir}"
   mkdir "#{install_dir}/conf"
   copy "#{project_dir}/coopr-server/distribution/etc/coopr/conf.dist/*", "#{install_dir}/conf"
   command "chmod +x #{install_dir}/bin/*"
