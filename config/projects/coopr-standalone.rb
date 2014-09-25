@@ -3,8 +3,8 @@ maintainer 'Cask'
 homepage 'http://github.com/caskco/coopr'
 
 install_dir '/opt/coopr'
-build_version   Omnibus::BuildVersion.semver
-# build_version '0.9.7'
+# build_version   Omnibus::BuildVersion.semver
+build_version '0.9.8'
 build_iteration 1
 
 # conflict with non-standalone
