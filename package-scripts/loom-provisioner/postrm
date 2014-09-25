@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# Perform necessary loom-provisioner removal steps
-# after package is uninstalled.
-#
-
-rm -f /etc/init.d/loom-provisioner
-
-exit 0

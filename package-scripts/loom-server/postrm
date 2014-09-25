@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# Perform necessary loom-server removal steps
-# after package is uninstalled.
-#
-
-rm -f /etc/init.d/loom-server
-
-exit 0

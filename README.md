@@ -1,7 +1,7 @@
-loom Omnibus project
+coopr Omnibus project
 ============================
 This project creates full-stack platform-specific packages for
-`loom-provisioner`, `loom-server`, `loom-ui`, and `loom-standalone`!
+`coopr-provisioner`, `coopr-server`, `coopr-ui`, and `coopr-standalone`!
 
 Installation
 ------------
@@ -19,7 +19,7 @@ Usage
 You create a platform-specific package using the `build project` command:
 
 ```shell
-$ bin/omnibus build loom-standalone
+$ bin/omnibus build coopr-standalone
 ```
 
 The platform/architecture type of the package created will match the platform
@@ -33,15 +33,15 @@ You can clean up all temporary files generated during the build process with
 the `clean` command:
 
 ```shell
-$ bin/omnibus clean omnibus-loom
+$ bin/omnibus clean omnibus-coopr
 ```
 
 Adding the `--purge` purge option removes __ALL__ files generated during the
-build including the project install directory (`/opt/omnibus-loom`) and
+build including the project install directory (`/opt/omnibus-coopr`) and
 the package cache directory (`/var/cache/omnibus/pkg`):
 
 ```shell
-$ bin/omnibus clean omnibus-loom --purge
+$ bin/omnibus clean omnibus-coopr --purge
 ```
 
 ### Help
@@ -83,10 +83,10 @@ section:
 
 ```shell
 $ bundle exec kitchen login ubuntu-12.04
-[vagrant@ubuntu...] $ cd omnibus-loom
+[vagrant@ubuntu...] $ cd omnibus-coopr
 [vagrant@ubuntu...] $ bundle install
 [vagrant@ubuntu...] $ ...
-[vagrant@ubuntu...] $ bin/omnibus build omnibus-loom
+[vagrant@ubuntu...] $ bin/omnibus build omnibus-coopr
 ```
 
 For a complete list of all commands and platforms, run `kitchen list` or
