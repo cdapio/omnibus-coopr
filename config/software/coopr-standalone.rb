@@ -1,5 +1,5 @@
 name 'coopr-standalone'
-default_version 'feature/refactor-l2c'
+default_version 'release/0.9.8'
 
 source :git => 'git://github.com/continuuity/loom.git'
 relative_path 'coopr-standalone'

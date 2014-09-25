@@ -1,5 +1,5 @@
 name 'coopr-ui'
-default_version 'feature/refactor-l2c'
+default_version 'release/0.9.8'
 
 dependency 'nodejs'
 

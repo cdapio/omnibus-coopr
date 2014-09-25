@@ -1,5 +1,5 @@
 name 'coopr-provisioner'
-default_version 'feature/refactor-l2c'
+default_version 'release/0.9.8'
 
 dependency 'ruby'
 dependency 'rubygems'
