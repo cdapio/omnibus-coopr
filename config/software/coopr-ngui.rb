@@ -3,7 +3,7 @@ default_version 'release/0.9.8'
 
 dependency 'nodejs'
 
-source :git => 'git://github.com/continuuity/loom.git'
+source :git => 'git://github.com/caskdata/coopr.git'
 relative_path 'coopr-ngui'
 
 npm = "#{install_dir}/embedded/bin/npm"

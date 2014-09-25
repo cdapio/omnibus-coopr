@@ -1,7 +1,7 @@
 name 'coopr-standalone'
 default_version 'release/0.9.8'
 
-source :git => 'git://github.com/continuuity/loom.git'
+source :git => 'git://github.com/caskdata/coopr.git'
 relative_path 'coopr-standalone'
 
 build do
