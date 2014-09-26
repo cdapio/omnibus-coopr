@@ -1,6 +1,6 @@
 name 'coopr-server'
 maintainer 'Cask'
-homepage 'http://github.com/caskco/coopr'
+homepage 'http://github.com/caskdata/coopr'
 
 install_dir '/opt/coopr/server'
 # build_version   Omnibus::BuildVersion.semver

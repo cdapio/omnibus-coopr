@@ -1,6 +1,6 @@
 name 'coopr-ngui'
 maintainer 'Cask'
-homepage 'http://github.com/caskco/coopr'
+homepage 'http://github.com/caskdata/coopr'
 
 install_dir '/opt/coopr/ngui'
 # build_version   Omnibus::BuildVersion.semver
