@@ -18,7 +18,8 @@ build do
   command "cd #{project_dir}/coopr-ngui; #{npm} install bower"
   command "cd #{project_dir}/coopr-ngui; #{npm} install"
   command "cd #{project_dir}/coopr-ngui; #{node} #{project_dir}/coopr-ngui/node_modules/bower/bin/bower install --config.interactive=false"
-  command "cd #{project_dir}/coopr-ngui; #{node} #{project_dir}/coopr-ngui/node_modules/gulp/bin/gulp.js build minify"
+  command "cd #{project_dir}/coopr-ngui; #{node} #{project_dir}/coopr-ngui/node_modules/gulp/bin/gulp.js clean"
+  command "cd #{project_dir}/coopr-ngui; #{node} #{project_dir}/coopr-ngui/node_modules/gulp/bin/gulp.js distribute"
 
   copy "#{project_dir}/coopr-ngui/dist*", "#{install_dir}"
   copy "#{project_dir}/coopr-ngui/server.js", "#{install_dir}"
