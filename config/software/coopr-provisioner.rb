@@ -1,5 +1,5 @@
 name 'coopr-provisioner'
-default_version 'release/0.9.8'
+default_version 'develop'
 
 dependency 'ruby'
 dependency 'rubygems'
