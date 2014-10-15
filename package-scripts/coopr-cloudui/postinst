@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# Perform necessary coopr-cloudui setup steps
+# after package is installed.
+#
+
+PROGNAME=$(basename $0)
+
+function error_exit
+{
+  echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+  exit 1
+}
+
+mkdir -p /var/log/coopr /var/run/coopr /etc/default /etc/logrotate.d
+chown -R coopr:coopr /opt/coopr/cloudui
+chown -R coopr:coopr /var/log/coopr
+chown -R coopr:coopr /var/run/coopr
+
+# Add defaults
+if [ ! -f /etc/default/coopr-cloudui ] ; then
+  echo "# Uncomment these with your COOPR_CLOUD variables" > /etc/default/coopr-cloudui
+  echo "#export COOPR_CLOUD_OAUTH_IO_PUBLIC_KEY=yourkey" >> /etc/default/coopr-cloudui
+  echo "#export COOPR_CLOUD_OAUTH_IO_SECRET_KEY=yourkey" >> /etc/default/coopr-cloudui
+  echo "#export COOPR_CLOUD_SESSION_SECRET=secret" >> /etc/default/coopr-cloudui
+fi
+
+ln -sf /opt/coopr/cloudui/distribution/etc/init.d/coopr-cloudui /etc/init.d/coopr-cloudui
+cp -f /opt/coopr/cloudui/distribution/etc/logrotate.d/coopr-cloudui /etc/logrotate.d/coopr-cloudui
+
+exit 0
