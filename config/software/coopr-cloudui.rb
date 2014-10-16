@@ -19,7 +19,7 @@ build do
   command "cd #{project_dir}/coopr-cloudui; #{node} #{project_dir}/coopr-cloudui/node_modules/gulp/bin/gulp.js distribute"
 
   copy "#{project_dir}/coopr-cloudui/dist*", "#{install_dir}"
-  copy "#{project_dir}/coopr-cloudui/server/server.js", "#{install_dir}"
+  copy "#{project_dir}/coopr-cloudui/server", "#{install_dir}"
   copy "#{project_dir}/coopr-cloudui/package.json", "#{install_dir}"
 
   command "cd #{install_dir}; #{npm} install --production"
