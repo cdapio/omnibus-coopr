@@ -10,7 +10,7 @@ build do
   command "chmod +x #{install_dir}/bin/*"
   mkdir "#{install_dir}/lib"
   command 'PATH=/usr/local/maven-3.1.1/bin:$PATH mvn clean package -DskipTests -pl coopr-cli -am'
-  %w(javadoc sources test).each do |jar|
+  %w(javadoc sources tests).each do |jar|
     command "rm -f #{project_dir}/coopr-cli/target/coopr-cli-*-#{jar}.jar"
   end
   copy "#{project_dir}/coopr-cli/target/coopr-cli-*.jar", "#{install_dir}/lib"
