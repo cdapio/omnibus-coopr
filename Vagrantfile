@@ -4,7 +4,7 @@
 require 'vagrant'
 
 if Vagrant::VERSION < '1.2.1'
-  raise 'The Omnibus Build Lab is only compatible with Vagrant 1.2.1+'
+  fail 'The Omnibus Build Lab is only compatible with Vagrant 1.2.1+'
 end
 
 host_project_path = File.expand_path('..', __FILE__)
@@ -12,16 +12,16 @@ guest_project_path = "/home/vagrant/#{File.basename(host_project_path)}"
 master_project = 'coopr'
 
 project_names = ENV['COOPR_BUILD_PROJECTS'].split if ENV['COOPR_BUILD_PROJECTS']
-project_names = %w(coopr-provisioner coopr-server coopr-ngui coopr-ui coopr-standalone) if project_names.nil?
+project_names = %w(coopr-provisioner coopr-server coopr-ui) if project_names.nil?
 
 Vagrant.configure('2') do |config|
 
   config.vm.hostname = "#{master_project}-omnibus-build-lab"
 
-  %w{
+  %w(
     ubuntu-12.04
     centos-6.5
-  }.each do |platform|
+  ).each do |platform|
 
     config.vm.define platform do |c|
       c.vm.box = "opscode-#{platform}"
@@ -64,7 +64,7 @@ Vagrant.configure('2') do |config|
         'omnibus' => {
           'build_user' => 'vagrant',
           'build_dir' => guest_project_path,
-          'install_dir' => "/opt/coopr"
+          'install_dir' => '/opt/coopr'
         }
       }
 

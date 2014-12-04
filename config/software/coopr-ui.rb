@@ -6,16 +6,26 @@ dependency 'nodejs'
 source :git => 'git://github.com/caskdata/coopr.git'
 relative_path 'coopr-ui'
 
+npm = "#{install_dir}/embedded/bin/npm"
+node = "#{install_dir}/embedded/bin/node"
+
 build do
   mkdir "#{install_dir}/bin"
   copy "#{project_dir}/coopr-ui/bin/*", "#{install_dir}/bin"
-  mkdir "#{install_dir}/etc/logrotate.d"
   copy '/var/cache/omnibus/src/node-v0.10.26/LICENSE', "#{install_dir}/LICENSE.node"
-  copy "#{project_dir}/coopr-ui/distribution/etc/logrotate.d/*", "#{install_dir}/etc/logrotate.d"
   command "chmod +x #{install_dir}/bin/*"
-  command "cd coopr-ui; #{install_dir}/embedded/bin/node tools/r.js -o tools/build.js"
-  delete "#{project_dir}/coopr-ui/omnibus"
-  delete "#{project_dir}/coopr-ui/build*"
-  copy "#{project_dir}/coopr-ui/*", "#{install_dir}"
+
+  command "cd #{project_dir}/coopr-ui; #{npm} install bower"
+  command "cd #{project_dir}/coopr-ui; #{npm} install"
+  command "cd #{project_dir}/coopr-ui; #{node} #{project_dir}/coopr-ui/node_modules/bower/bin/bower install --config.interactive=false"
+  command "cd #{project_dir}/coopr-ui; #{node} #{project_dir}/coopr-ui/node_modules/gulp/bin/gulp.js clean"
+  command "cd #{project_dir}/coopr-ui; #{node} #{project_dir}/coopr-ui/node_modules/gulp/bin/gulp.js distribute"
+
+  copy "#{project_dir}/coopr-ui/dist*", "#{install_dir}"
+  copy "#{project_dir}/coopr-ui/server.js", "#{install_dir}"
+  copy "#{project_dir}/coopr-ui/package.json", "#{install_dir}"
+
+  command "cd #{install_dir}; #{npm} install --production"
+
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
 end

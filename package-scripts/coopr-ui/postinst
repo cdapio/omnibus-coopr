@@ -22,6 +22,7 @@ if [ ! -f /etc/default/coopr-ui ] ; then
   echo "export COOPR_SERVER_URI=http://localhost:55054" > /etc/default/coopr-ui
   echo "export COOPR_LOG_DIR=/var/log/coopr" >> /etc/default/coopr-ui
   echo "export COOPR_UI_PORT=8100" >> /etc/default/coopr-ui
+  echo "export COOPR_CORS_PORT=8081" >> /etc/default/coopr-ui
 fi
 
 ln -sf /opt/coopr/ui/distribution/etc/init.d/coopr-ui /etc/init.d/coopr-ui
