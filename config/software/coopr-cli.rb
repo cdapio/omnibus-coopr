@@ -14,5 +14,6 @@ build do
     command "rm -f #{project_dir}/coopr-cli/target/coopr-cli-*-#{jar}.jar"
   end
   copy "#{project_dir}/coopr-cli/target/coopr-cli-*.jar", "#{install_dir}/lib"
+  command "rm -rf #{install_dir}/embedded"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
 end
