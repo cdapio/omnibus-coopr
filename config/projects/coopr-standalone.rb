@@ -23,7 +23,6 @@ dependency 'preparation'
 dependency 'coopr-provisioner'
 dependency 'coopr-server'
 dependency 'coopr-ui'
-dependency 'coopr-ngui'
 dependency 'coopr-standalone'
 
 # version manifest file
