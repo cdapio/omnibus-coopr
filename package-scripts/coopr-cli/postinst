@@ -20,6 +20,4 @@ if [ ! -f /etc/profile.d/coopr-cli.sh ] ; then
   echo "export PATH=\$PATH:/opt/coopr/cli/bin" > /etc/profile.d/coopr-cli.sh
 fi
 
-ln -sf /opt/coopr/cli/bin/coopr-cli.sh /opt/coopr/cli/bin/coopr
-
 exit 0
