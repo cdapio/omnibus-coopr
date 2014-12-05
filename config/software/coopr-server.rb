@@ -6,6 +6,7 @@ relative_path 'coopr-server'
 
 build do
   mkdir "#{install_dir}/bin"
+  command 'cd coopr-server; git submodule init && git submodule update'
   copy "#{project_dir}/coopr-server/bin/*", "#{install_dir}/bin"
   copy "#{project_dir}/coopr-docs/licenses", "#{install_dir}"
   copy "#{project_dir}/coopr-server/distribution", "#{install_dir}"
