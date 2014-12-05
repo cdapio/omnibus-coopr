@@ -6,11 +6,17 @@ relative_path 'coopr-server'
 
 build do
   mkdir "#{install_dir}/bin"
+  mkdir "#{install_dir}/templates"
   command 'cd coopr-server; git submodule init && git submodule update'
   copy "#{project_dir}/coopr-server/bin/*", "#{install_dir}/bin"
   copy "#{project_dir}/coopr-docs/licenses", "#{install_dir}"
   copy "#{project_dir}/coopr-server/distribution", "#{install_dir}"
-  copy "#{project_dir}/coopr-templates", "#{install_dir}/templates"
+  %w(clustertemplates hardwaretypes imagetypes providers services).each do |dir|
+    if File.exist?("#{project_dir}/coopr-templates/#{dir}")
+      copy "#{project_dir}/coopr-templates/#{dir}", "#{install_dir}/templates"
+    end
+  end
+  copy "#{project_dir}/coopr-server/templates/*", "#{install_dir}/templates"
   mkdir "#{install_dir}/conf"
   copy "#{project_dir}/coopr-server/distribution/etc/coopr/conf.dist/*", "#{install_dir}/conf"
   command "chmod +x #{install_dir}/bin/*"
