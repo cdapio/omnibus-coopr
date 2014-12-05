@@ -12,6 +12,4 @@ function error_exit
   exit 1
 }
 
-update-alternatives --remove coopr-conf /etc/coopr/conf.dist
-
 exit 0
