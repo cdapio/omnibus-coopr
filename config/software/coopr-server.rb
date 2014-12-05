@@ -10,7 +10,7 @@ build do
   copy "#{project_dir}/coopr-server/bin/*", "#{install_dir}/bin"
   copy "#{project_dir}/coopr-docs/licenses", "#{install_dir}"
   copy "#{project_dir}/coopr-server/distribution", "#{install_dir}"
-  copy "#{project_dir}/coopr-server/config", "#{install_dir}"
+  copy "#{project_dir}/coopr-templates", "#{install_dir}/templates"
   mkdir "#{install_dir}/conf"
   copy "#{project_dir}/coopr-server/distribution/etc/coopr/conf.dist/*", "#{install_dir}/conf"
   command "chmod +x #{install_dir}/bin/*"
