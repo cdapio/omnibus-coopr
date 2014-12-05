@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Perform necessary coopr-cli setup steps
+# after package is installed.
+#
+
+PROGNAME=$(basename $0)
+
+function error_exit
+{
+  echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+  exit 1
+}
+
+mkdir -p /etc/profile.d
+chown -R coopr:coopr /opt/coopr
+
+# Add profile.d
+if [ ! -f /etc/profile.d/coopr-cli.sh ] ; then
+  echo "export PATH=\$PATH:/opt/coopr/cli/bin" > /etc/profile.d/coopr-cli.sh
+fi
+
+exit 0
