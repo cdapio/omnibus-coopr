@@ -13,7 +13,7 @@ build_iteration 1
 # creates required build directories
 dependency 'preparation'
 
-# coopr-provisioner dependencies/components
+# coopr-cli dependencies/components
 # dependency "somedep"
 dependency 'coopr-cli'
 
