@@ -40,7 +40,7 @@ Vagrant.configure('2') do |config|
   end
 
   # Ensure a recent version of the Chef Omnibus packages are installed
-  config.omnibus.chef_version = :latest
+  config.omnibus.chef_version = '11.16.4'
 
   # Enable the berkshelf-vagrant plugin
   config.berkshelf.enabled = true
