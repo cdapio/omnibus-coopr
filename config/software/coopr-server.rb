@@ -12,9 +12,7 @@ build do
   copy "#{project_dir}/coopr-docs/licenses", "#{install_dir}"
   copy "#{project_dir}/coopr-server/distribution", "#{install_dir}"
   %w(clustertemplates hardwaretypes imagetypes providers services).each do |dir|
-    if File.exist?("#{project_dir}/coopr-templates/#{dir}")
-      copy "#{project_dir}/coopr-templates/#{dir}", "#{install_dir}/templates"
-    end
+    copy "#{project_dir}/coopr-templates/#{dir}", "#{install_dir}/templates"
   end
   copy "#{project_dir}/coopr-server/templates/*", "#{install_dir}/templates"
   mkdir "#{install_dir}/conf"
