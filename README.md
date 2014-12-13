@@ -1,7 +1,7 @@
 COOPR Omnibus project
 ============================
 This project creates full-stack platform-specific packages for
-`coopr-provisioner`, `coopr-server`, `coopr-ui`, and `coopr-standalone`!
+`coopr-cli`, `coopr-provisioner`, `coopr-server`, `coopr-ui`, and `coopr-standalone`!
 
 Installation
 ------------
