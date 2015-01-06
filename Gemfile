@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+group :development do
+  gem 'rake'
+  gem 'rubocop'
+end
+
 # Use Berkshelf for resolving cookbook dependencies
 gem 'berkshelf', '~> 3.0'
 gem 'hashie', '< 3.0'
