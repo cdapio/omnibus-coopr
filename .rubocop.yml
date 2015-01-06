@@ -13,3 +13,5 @@ FileName:
   Enabled: False
 SingleSpaceBeforeFirstArg:
   Enabled: false
+Style/AsciiComments:
+  Enabled: false
