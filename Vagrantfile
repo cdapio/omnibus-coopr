@@ -12,7 +12,7 @@ guest_project_path = "/home/vagrant/#{File.basename(host_project_path)}"
 master_project = 'coopr'
 
 project_names = ENV['COOPR_BUILD_PROJECTS'].split if ENV['COOPR_BUILD_PROJECTS']
-project_names = %w(coopr-provisioner coopr-server coopr-ui) if project_names.nil?
+project_names = %w(coopr-cli coopr-provisioner coopr-server coopr-ui) if project_names.nil?
 
 Vagrant.configure('2') do |config|
 
@@ -40,7 +40,7 @@ Vagrant.configure('2') do |config|
   end
 
   # Ensure a recent version of the Chef Omnibus packages are installed
-  config.omnibus.chef_version = :latest
+  config.omnibus.chef_version = '11.16.4'
 
   # Enable the berkshelf-vagrant plugin
   config.berkshelf.enabled = true
