@@ -5,8 +5,8 @@ dependency 'ruby'
 dependency 'rubygems'
 dependency 'bundler'
 
-source :git => 'git://github.com/caskdata/coopr.git'
-relative_path 'coopr-provisioner'
+source :git => 'git://github.com/caskdata/coopr-provisioner.git'
+# relative_path 'coopr-provisioner'
 
 build do
   gem 'install fog --no-rdoc --no-ri --version 1.21.0'
@@ -15,7 +15,7 @@ build do
   gem 'install rest_client --no-rdoc --no-ri --version 1.7.3'
   gem 'install google-api-client --no-rdoc --no-ri --version 0.7.1'
   mkdir install_dir
-  copy "#{project_dir}/coopr-provisioner/*", "#{install_dir}"
+  copy "#{project_dir}/*", "#{install_dir}"
   command "chmod +x #{install_dir}/bin/*"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
   gem 'uninstall -Ix rdoc'
