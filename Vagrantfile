@@ -74,7 +74,7 @@ Vagrant.configure('2') do |config|
     config.vm.provision :shell, :inline => <<-OMNIBUS_BUILD
       export PATH=/usr/local/bin:/usr/local/maven-3.1.1/bin:$PATH
       cd #{guest_project_path}
-      gem install bundler
+      gem install bundler --no-rdoc --no-ri
       su vagrant -c "bundle install --binstubs"
       su vagrant -c "bin/omnibus build #{project_name}"
       rm -rf /opt/coopr
