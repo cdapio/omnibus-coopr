@@ -5,6 +5,7 @@ AllCops:
     - config/software/nodejs.rb
     - config/software/nokogiri.rb
     - bin/*
+    - vendor/bundle/**/*
 LineLength:
   Max: 250
 HashSyntax:
@@ -12,4 +13,6 @@ HashSyntax:
 FileName:
   Enabled: False
 SingleSpaceBeforeFirstArg:
+  Enabled: false
+Style/AsciiComments:
   Enabled: false
