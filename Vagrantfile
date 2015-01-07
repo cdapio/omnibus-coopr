@@ -15,19 +15,16 @@ project_names = ENV['COOPR_BUILD_PROJECTS'].split if ENV['COOPR_BUILD_PROJECTS']
 project_names = %w(coopr-cli coopr-provisioner coopr-server coopr-ui) if project_names.nil?
 
 Vagrant.configure('2') do |config|
-
   config.vm.hostname = "#{master_project}-omnibus-build-lab"
 
   %w(
     ubuntu-12.04
     centos-6.5
   ).each do |platform|
-
     config.vm.define platform do |c|
       c.vm.box = "opscode-#{platform}"
       c.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_#{platform}_chef-provisionerless.box"
     end
-
   end
 
   config.vm.provider :virtualbox do |vb|
@@ -52,7 +49,6 @@ Vagrant.configure('2') do |config|
   config.vm.synced_folder host_project_path, guest_project_path
 
   project_names.each do |project_name|
-
     # Update APT
     config.vm.provision :shell, :inline => <<-DO_APT
       test -x /usr/bin/apt-get && sudo apt-get update || true
@@ -83,6 +79,5 @@ Vagrant.configure('2') do |config|
       su vagrant -c "bin/omnibus build #{project_name}"
       rm -rf /opt/coopr
     OMNIBUS_BUILD
-
   end
 end
