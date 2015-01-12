@@ -20,7 +20,8 @@ export COOPR_BUILD_PROJECTS
 echo ${__OUTPUT}
 
 bundle install --binstubs
+mkdir -p /var/cache/omnibus
 for proj in ${COOPR_BUILD_PROJECTS}; do
-  bin/omnibus build ${proj}
+  bin/omnibus build ${proj} || { echo "Failed building ${proj}" && exit 1; }
   rm -rf /opt/coopr
 done
