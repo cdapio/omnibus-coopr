@@ -22,4 +22,4 @@ sudo: false
 bundler_args: --jobs 7 --without docs integration --binstubs
 script:
   - bundle exec rake
-  - ./build-novm.sh all
+  - sed -i -e 's:/opt/coopr:./build:g' config/projects/coopr-* && ./build-novm.sh all
