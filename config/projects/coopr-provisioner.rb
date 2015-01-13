@@ -2,7 +2,8 @@ name 'coopr-provisioner'
 maintainer 'Cask'
 homepage 'http://github.com/caskdata/coopr'
 
-install_dir '/opt/coopr/provisioner'
+# install_dir '/opt/coopr/provisioner'
+install_dir './build'
 build_version   Omnibus::BuildVersion.semver
 # build_version '0.9.8'
 build_iteration 1
