@@ -1,5 +1,3 @@
 base_dir './local'
-build_dir './build'
-cache_dir './cache'
-package_dir './package'
+build_dir './local/omnibus/build'
 use_git_caching false
