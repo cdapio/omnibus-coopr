@@ -21,6 +21,6 @@ echo ${__OUTPUT}
 
 bundle install --binstubs
 for proj in ${COOPR_BUILD_PROJECTS}; do
-  bin/omnibus build ${proj} || { echo "Failed building ${proj}" && exit 1; }
+  bin/omnibus build ${proj} --log-level=info || { echo "Failed building ${proj}" && exit 1; }
   rm -rf /opt/coopr
 done
