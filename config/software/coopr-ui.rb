@@ -26,6 +26,9 @@ build do
   copy "#{project_dir}/coopr-ui/package.json", "#{install_dir}"
 
   command "cd #{install_dir}; #{npm} install --production"
-
+  block do
+    # Remove unused extension which is known to make health checks fail on CentOS 6.
+    FileUtils.rm_f(Dir.glob("#{install_dir}/embedded/lib/python2.7/lib-dynload/_sqlite3.*"))
+  end
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
 end
