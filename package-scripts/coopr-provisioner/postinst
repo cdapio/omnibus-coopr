@@ -13,7 +13,7 @@ function error_exit
 }
 
 mkdir -p /var/log/coopr /var/run/coopr /etc/default /etc/logrotate.d /etc/coopr/conf.dist /etc/coopr/conf.coopr
-cp -f /opt/coopr/provisioner/master/conf/provisioner-site* /etc/coopr/conf.dist
+cp -f /opt/coopr/provisioner/conf/provisioner-site* /etc/coopr/conf.dist
 chown -R coopr:coopr /opt/coopr/provisioner
 chown -R coopr:coopr /var/log/coopr
 chown -R coopr:coopr /var/run/coopr
