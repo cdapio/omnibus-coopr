@@ -1,5 +1,5 @@
 name 'coopr-ui'
-default_version 'develop'
+default_version 'release/0.9.9'
 
 dependency 'nodejs'
 

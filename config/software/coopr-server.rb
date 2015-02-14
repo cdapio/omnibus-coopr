@@ -1,5 +1,5 @@
 name 'coopr-server'
-default_version 'develop'
+default_version 'release/0.9.9'
 
 source :git => 'git://github.com/caskdata/coopr.git'
 relative_path 'coopr-server'
