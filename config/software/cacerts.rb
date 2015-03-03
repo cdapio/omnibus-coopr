@@ -18,33 +18,21 @@
 name "cacerts"
 
 # Date of the file is in a comment at the start, or in the changelog
-default_version "2015.02.25"
+default_version "2014.08.13-COOPR-728"
 
 version "2015.02.25" do
   source :md5 => "19e7f27540ee694308729fd677163649"
+  source :url => "http://curl.haxx.se/ca/cacert.pem"
 end
 
-version "2014.09.03" do
-  source :md5 => "d7f7dd7e3ede3e323fc0e09381f16caf"
+version "2014.08.13-COOPR-728" do
+  source :md5 => "f362813cd75967fa3096c00e5cf67914"
+  # Taken from http://curl.haxx.se/docs/caextract.html
+  source :url => "https://raw.githubusercontent.com/bagder/ca-bundle/e9175fec5d0c4d42de24ed6d84a06d504d5e5a09/ca-bundle.crt"
+  source_file = 'ca-bundle.crt'
 end
 
-version "2014.08.20" do
-  source :md5 => "c9f4f7f4d6a5ef6633e893577a09865e"
-end
-
-version "2014.07.15" do
-  source :md5 => "fd48275847fa10a8007008379ee902f1"
-end
-
-version "2014.04.22" do
-  source :md5 => "9f92a0d9f605e227ae068e605f4c86fa"
-end
-
-version "2014.01.28" do
-  source :md5 => "5d108f8ab86afacc6663aafca8604dd3"
-end
-
-source :url => "http://curl.haxx.se/ca/cacert.pem"
+source_file = 'cacert.pem' if source_file.nil?
 relative_path "cacerts-#{version}"
 
 build do
@@ -58,7 +46,7 @@ build do
     # fix worked. Rather than trying to fix this now, we're filing a bug and copying the cacert.pem
     # directly from the cache instead.
 
-    FileUtils.cp(File.expand_path("cacert.pem", Config.cache_dir),
+    FileUtils.cp(File.expand_path(source_file, Config.cache_dir),
                  File.expand_path("embedded/ssl/certs/cacert.pem", install_dir))
   end
 
