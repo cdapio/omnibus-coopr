@@ -23,6 +23,7 @@ default_version "2014.08.13-COOPR-728"
 version "2015.02.25" do
   source :md5 => "19e7f27540ee694308729fd677163649"
   source :url => "http://curl.haxx.se/ca/cacert.pem"
+  source_file = 'cacert.pem'
 end
 
 version "2014.08.13-COOPR-728" do
@@ -32,7 +33,6 @@ version "2014.08.13-COOPR-728" do
   source_file = 'ca-bundle.crt'
 end
 
-source_file = 'cacert.pem' if source_file.nil?
 relative_path "cacerts-#{version}"
 
 build do
