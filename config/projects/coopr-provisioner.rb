@@ -4,7 +4,7 @@ homepage 'http://github.com/caskdata/coopr'
 
 install_dir '/opt/coopr/provisioner'
 # build_version   Omnibus::BuildVersion.semver
-# build_version '0.9.9'
+build_version '0.9.9'
 build_iteration 1
 
 # conflict with standalone
