@@ -9,7 +9,7 @@ source :git => 'git://github.com/caskdata/coopr-provisioner.git'
 # relative_path 'coopr-provisioner'
 
 build do
-  gem 'install fog --no-rdoc --no-ri --version 1.26.0'
+  gem 'install fog --no-rdoc --no-ri --version 1.36.0'
   gem 'install sinatra --no-rdoc --no-ri --version 1.4.5'
   gem 'install thin --no-rdoc --no-ri --version 1.6.2'
   gem 'install rest_client --no-rdoc --no-ri --version 1.7.3'
