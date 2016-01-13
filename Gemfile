@@ -8,6 +8,7 @@ end
 # Use Berkshelf for resolving cookbook dependencies
 gem 'berkshelf', '~> 3.0'
 gem 'hashie', '< 3.0'
+gem 'varia_model', '< 0.5' # 0.5+ require Ruby 2.0
 
 # Install omnibus software
 gem 'omnibus', '~> 3.1'
