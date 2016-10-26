@@ -1,0 +1,7 @@
+{
+  "omnibus": {
+    "build_user": "coopr",
+    "build_dir": "/var/tmp/coopr-build",
+    "install_dir": "/opt/coopr"
+  }
+}
