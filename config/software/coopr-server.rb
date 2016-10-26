@@ -9,9 +9,9 @@ build do
   mkdir "#{install_dir}/templates"
   command 'git submodule init && git submodule update'
   copy "#{project_dir}/coopr-server/bin/*", "#{install_dir}/bin"
-  copy "#{project_dir}/coopr-docs/licenses", "#{install_dir}"
-  copy "#{project_dir}/coopr-server/distribution", "#{install_dir}"
-  copy "#{project_dir}/coopr-server/sql", "#{install_dir}"
+  copy "#{project_dir}/coopr-docs/licenses", install_dir
+  copy "#{project_dir}/coopr-server/distribution", install_dir
+  copy "#{project_dir}/coopr-server/sql", install_dir
   %w(bin clustertemplates hardwaretypes imagetypes providers services).each do |dir|
     copy "#{project_dir}/coopr-templates/#{dir}", "#{install_dir}/templates"
   end
