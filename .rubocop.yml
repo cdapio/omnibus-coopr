@@ -12,7 +12,7 @@ HashSyntax:
   Enabled: False
 FileName:
   Enabled: False
-SingleSpaceBeforeFirstArg:
+SpaceBeforeFirstArg:
   Enabled: false
 Style/AsciiComments:
   Enabled: false
