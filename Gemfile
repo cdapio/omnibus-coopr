@@ -2,13 +2,17 @@ source 'https://rubygems.org'
 
 group :development do
   gem 'rake'
-  gem 'rubocop'
+  gem 'rubocop', '< 0.42'
 end
 
 # Use Berkshelf for resolving cookbook dependencies
 gem 'berkshelf', '~> 3.0'
 gem 'hashie', '< 3.0'
-gem 'varia_model', '< 0.5' # 0.5+ require Ruby 2.0
+gem 'varia_model', '< 0.5'
+gem 'buff-ignore', '< 1.2'
+gem 'json', '< 2.0'
+gem 'net-ssh', '~> 2.6'
+gem 'dep_selector', '< 1.0.4'
 
 # Install omnibus software
 gem 'omnibus', '~> 3.1'
