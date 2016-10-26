@@ -48,34 +48,39 @@ Vagrant.configure('2') do |config|
 
   config.vm.synced_folder host_project_path, guest_project_path
 
-  project_names.each do |project_name|
-    # Update APT
-    config.vm.provision :shell, :inline => <<-DO_APT
-      test -x /usr/bin/apt-get && sudo apt-get update || true
-    DO_APT
+  # Update APT on Ubuntu
+  config.vm.provision :shell, :inline => <<-DO_APT
+    test -x /usr/bin/apt-get && sudo apt-get update || true
+  DO_APT
 
-    # prepare VM to be an Omnibus builder
-    config.vm.provision :chef_solo do |chef|
-      chef.json = {
-        'omnibus' => {
-          'build_user' => 'vagrant',
-          'build_dir' => guest_project_path,
-          'install_dir' => '/opt/coopr'
-        }
+  # prepare VM to be an Omnibus builder
+  config.vm.provision :chef_solo do |chef|
+    chef.json = {
+      'omnibus' => {
+        'build_user' => 'vagrant',
+        'build_dir' => guest_project_path,
+        'install_dir' => '/opt/coopr'
       }
+    }
 
-      chef.run_list = [
-        'recipe[omnibus::default]',
-        'recipe[java::default]',
-        'recipe[maven::default]'
-      ]
-    end
+    chef.run_list = [
+      'recipe[omnibus::default]',
+      'recipe[java::default]',
+      'recipe[maven::default]'
+    ]
+  end
 
+  # Install bundler and bundle install
+  config.vm.provision :shell, :inline => <<-BUNDLER
+    cd #{guest_project_path}
+    gem install bundler --no-rdoc --no-ri
+    su vagrant -c "bundle install --binstubs"
+  BUNDLER
+
+  project_names.each do |project_name|
     config.vm.provision :shell, :inline => <<-OMNIBUS_BUILD
       export PATH=/usr/local/bin:/usr/local/maven-3.1.1/bin:$PATH
       cd #{guest_project_path}
-      gem install bundler --no-rdoc --no-ri
-      su vagrant -c "bundle install --binstubs"
       su vagrant -c "bin/omnibus build #{project_name}"
       rm -rf /opt/coopr
     OMNIBUS_BUILD
