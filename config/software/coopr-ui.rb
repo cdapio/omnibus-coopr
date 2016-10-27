@@ -21,9 +21,9 @@ build do
   command "cd #{project_dir}/coopr-ui; #{node} #{project_dir}/coopr-ui/node_modules/gulp/bin/gulp.js clean"
   command "cd #{project_dir}/coopr-ui; #{node} #{project_dir}/coopr-ui/node_modules/gulp/bin/gulp.js distribute"
 
-  copy "#{project_dir}/coopr-ui/dist*", "#{install_dir}"
-  copy "#{project_dir}/coopr-ui/server*", "#{install_dir}"
-  copy "#{project_dir}/coopr-ui/package.json", "#{install_dir}"
+  copy "#{project_dir}/coopr-ui/dist*", install_dir
+  copy "#{project_dir}/coopr-ui/server*", install_dir
+  copy "#{project_dir}/coopr-ui/package.json", install_dir
 
   command "cd #{install_dir}; #{npm} install --production"
 

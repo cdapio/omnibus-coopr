@@ -11,7 +11,7 @@ source :git => 'git://github.com/caskdata/coopr-provisioner.git'
 build do
   bundle 'install --jobs 7 --without test'
   mkdir install_dir
-  copy "#{project_dir}/*", "#{install_dir}"
+  copy "#{project_dir}/*", install_dir
   command "chmod +x #{install_dir}/bin/*"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
   gem 'uninstall -Ix rdoc'
