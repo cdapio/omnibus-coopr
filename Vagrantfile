@@ -74,6 +74,7 @@ Vagrant.configure('2') do |config|
   config.vm.provision :shell, :inline => <<-BUNDLER
     cd #{guest_project_path}
     gem install bundler --no-rdoc --no-ri
+    chown -R vagrant /opt
     su vagrant -c "bundle install --binstubs"
   BUNDLER
 
