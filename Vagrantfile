@@ -81,6 +81,7 @@ Vagrant.configure('2') do |config|
     config.vm.provision :shell, :inline => <<-OMNIBUS_BUILD
       export PATH=/usr/local/bin:/usr/local/maven-3.1.1/bin:$PATH
       cd #{guest_project_path}
+      mkdir -p /opt/coopr && chown vagrant /opt/coopr
       su vagrant -c "bin/omnibus build #{project_name}"
       rm -rf /opt/coopr
     OMNIBUS_BUILD
