@@ -14,7 +14,7 @@ __clean() {
         docker rm ${__id} 2>/dev/null
       done
     fi
-    __images=$(docker images | grep omnibus-coopr-${__distro} | awk '{print $3' | sort -u 2>/dev/null)
+    __images=$(docker images | grep omnibus-coopr-${__distro} | awk '{print $3}' | sort -u 2>/dev/null)
     if [[ -n ${__images} ]]; then
       for __img in ${__images}; do
         docker rmi ${__img} 2>/dev/null
@@ -32,7 +32,7 @@ __build() {
     __image=omnibus-coopr-${__distro}
     docker build -f Dockerfile-${__distro} -t ${__image} .
     if [[ $? -eq 0 ]]; then
-      docker run -ti ${__image} -v $(pwd -P)/target:/tmp/target /bin/bash -c 'cp -f /var/tmp/coopr-build/pkg/* /tmp/target'
+      docker run -ti -v $(pwd -P)/target:/tmp/target ${__image} /bin/bash -c 'cp -f /var/tmp/coopr-build/pkg/* /tmp/target'
       if [[ $? -eq 0 ]]; then
         echo "Copied packages to target successfully"
         return
@@ -55,7 +55,7 @@ if [[ ${#} -eq 0 ]]; then
   __clean && __build
   __ret=$?
 else
-  while [[ ${#} -gt 0 ]]; then
+  while [[ ${#} -gt 0 ]]; do
     case ${1} in
       clean|build) __action=${1}; shift; __${__action}; __ret=$? ;;
       *) die "Unrecognized parameter!" ;;
