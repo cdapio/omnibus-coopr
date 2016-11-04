@@ -32,7 +32,7 @@ __build() {
     __image=omnibus-coopr-${__distro}
     docker build -f Dockerfile-${__distro} -t ${__image} .
     if [[ $? -eq 0 ]]; then
-      docker run -ti -v $(pwd -P)/target:/tmp/target ${__image} /bin/bash -c 'cp -f /var/tmp/coopr-build/pkg/* /tmp/target'
+      docker run -i -v $(pwd -P)/target:/tmp/target ${__image} /bin/bash -c 'cp -f /var/tmp/coopr-build/pkg/* /tmp/target'
       if [[ $? -eq 0 ]]; then
         echo "Copied packages to target successfully"
         return
