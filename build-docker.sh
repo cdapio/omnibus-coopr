@@ -2,10 +2,9 @@
 
 COOPR_DISTRIBUTIONS=${COOPR_DISTRIBUTIONS:-centos ubuntu}
 
-die() { echo "ERROR: ${@}"; exit 1; }
+die() { __clean; echo "ERROR: ${@}"; exit 1; }
 
 __clean() {
-  rm -rf target
   for __distro in ${COOPR_DISTRIBUTIONS}; do
     __containers=$(docker ps -a | grep omnibus-coopr-${__distro} | awk '{print $1}' 2>/dev/null)
     if [[ -n ${__containers} ]]; then
@@ -46,6 +45,7 @@ __build() {
   if [[ -n ${__failed} ]]; then
     die "Failed to build the following distribution packages: ${__failed}"
   fi
+  __clean
   return
 }
 
