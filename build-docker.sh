@@ -33,10 +33,9 @@ __build() {
     if [[ $? -eq 0 ]]; then
       docker run -i -v $(pwd -P)/target:/tmp/target ${__image} /bin/bash -c 'cp -f /var/tmp/coopr-build/pkg/* /tmp/target'
       if [[ $? -eq 0 ]]; then
-        echo "Copied packages to target successfully"
-        return
+        echo "Copied ${__distro} packages to target successfully"
       else
-        die "Copying packages failed!"
+        die "Copying ${__distro} packages failed!"
       fi
     else
       __failed+="${__distro} "
@@ -52,7 +51,7 @@ __build() {
 __ret=1
 if [[ ${#} -eq 0 ]]; then
   echo "No arguments given, running: clean build"
-  __clean && __build
+  __clean ; __build
   __ret=$?
 else
   while [[ ${#} -gt 0 ]]; do
