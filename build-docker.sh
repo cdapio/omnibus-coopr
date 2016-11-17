@@ -2,7 +2,7 @@
 
 COOPR_DISTRIBUTIONS=${COOPR_DISTRIBUTIONS:-centos ubuntu}
 
-die() { __clean; echo "ERROR: ${@}"; exit 1; }
+die() { echo "ERROR: ${@}"; exit 1; }
 
 __clean() {
   for __distro in ${COOPR_DISTRIBUTIONS}; do
@@ -29,8 +29,10 @@ __build() {
   for __distro in ${COOPR_DISTRIBUTIONS}; do
     # Create image
     __image=omnibus-coopr-${__distro}
+    echo "Creating ${__image} from Dockerfile-${__distro}"
     docker build -f Dockerfile-${__distro} -t ${__image} .
     if [[ $? -eq 0 ]]; then
+      echo "Copying artifacts from ${__image}"
       docker run -i -v $(pwd -P)/target:/tmp/target ${__image} /bin/bash -c 'cp -f /var/tmp/coopr-build/pkg/* /tmp/target'
       if [[ $? -eq 0 ]]; then
         echo "Copied ${__distro} packages to target successfully"
