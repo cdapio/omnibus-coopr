@@ -33,7 +33,7 @@ __build() {
     docker build -f Dockerfile-${__distro} -t ${__image} .
     if [[ $? -eq 0 ]]; then
       echo "Copying artifacts from ${__image}"
-      docker run -i -v $(pwd -P)/target:/tmp/target ${__image} /bin/bash -c 'cp -f /var/tmp/coopr-build/pkg/* /tmp/target'
+      docker run -i -v $(pwd -P)/target:/tmp/target ${__image} /bin/cp -vf /var/tmp/coopr-build/pkg/* /tmp/target
       if [[ $? -eq 0 ]]; then
         echo "Copied ${__distro} packages to target successfully"
       else
