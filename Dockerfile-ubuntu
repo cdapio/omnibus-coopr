@@ -34,7 +34,7 @@ RUN useradd -m coopr && \
     curl \
     git \
     python2.7 && \
-  curl -vL http://chef.io/chef/install.sh | bash -s -- -v 12.10.24 && \
+  curl -vL http://chef.io/chef/install.sh | bash -s -- -v 12.19.36 && \
   mkdir -p /var/chef/cookbooks && \
   cd /var/chef/cookbooks && \
   touch .gitignore && git init && git add .gitignore && git commit -m 'Initial commit' && \
