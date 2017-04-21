@@ -39,7 +39,6 @@ RUN useradd -m coopr && \
   cd /var/chef/cookbooks && \
   touch .gitignore && git init && git add .gitignore && git commit -m 'Initial commit' && \
   knife cookbook site install maven 1.1.0 && \
-  knife cookbook site install apt 2.4.0 && \
   knife cookbook site install build-essential 1.4.4 && \
   knife cookbook site install git 3.1.0 && \
   knife cookbook site install homebrew 1.9.0 && \
@@ -49,6 +48,7 @@ RUN useradd -m coopr && \
   knife cookbook site install windows 1.34.2 && \
   knife cookbook site install wix 1.1.0 && \
   knife cookbook site install yum-epel 0.4.0 && \
+  knife cookbook site install apt 2.4.0 && \
   knife cookbook site download 7-zip --force && \
   for tb in maven apt build-essential git homebrew pkgin pkgutil rbenv windows wix yum-epel 7-zip; do \
     tar xf ${tb}*.tar.gz ; \
