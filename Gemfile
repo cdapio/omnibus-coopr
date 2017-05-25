@@ -13,6 +13,7 @@ gem 'buff-ignore', '< 1.2'
 gem 'json', '< 2.0'
 gem 'net-ssh', '~> 2.6'
 gem 'dep_selector', '< 1.0.4'
+gem 'nio4r', '< 2.0'
 
 # Install omnibus software
 gem 'omnibus', '~> 3.1'
