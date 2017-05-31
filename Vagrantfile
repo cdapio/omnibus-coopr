@@ -3,10 +3,6 @@
 
 require 'vagrant'
 
-if Vagrant::VERSION < '1.2.1'
-  raise 'The Omnibus Build Lab is only compatible with Vagrant 1.2.1+'
-end
-
 host_project_path = File.expand_path('..', __FILE__)
 guest_project_path = "/home/vagrant/#{File.basename(host_project_path)}"
 master_project = 'coopr'
