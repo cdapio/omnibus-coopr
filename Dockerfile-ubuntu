@@ -77,7 +77,7 @@ RUN useradd -m coopr && \
     su coopr -c "bin/omnibus build ${project}" || __failed+="${project} "; \
     rm -rf /opt/coopr ; \
   done && \
-  if [[ -n ${__failed} ]]; then \
+  if test -n "${__failed}"; then \
     echo "ERROR: Failed to build ${__failed}"; \
     exit 1; \
   fi
