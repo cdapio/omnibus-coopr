@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 group :development do
   gem 'rake'
-  gem 'rubocop', '< 0.42'
+  gem 'rubocop'
 end
 
 # Use Berkshelf for resolving cookbook dependencies
