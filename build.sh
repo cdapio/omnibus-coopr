@@ -5,7 +5,8 @@ __usage() { echo "Usage: ${0}:"; echo "  ${0} <all|project [project] ...>"; exit
 if [[ ${COOPR_BUILD_PROJECTS} ]]; then
   __OUTPUT="Building ${COOPR_BUILD_PROJECTS}"
 elif [[ ${#} -eq 1 ]] && [[ ${1} == 'all' ]]; then
-  __OUTPUT="Building all"
+  COOPR_BUILD_PROJECTS="coopr-cli coopr-provisioner coopr-server coopr-ui"
+  __OUTPUT="Building all (${COOPR_BUILD_PROJECTS})"
 elif [[ ${#} -ge 1 ]]; then
   __OUTPUT="Building ${*}"
   COOPR_BUILD_PROJECTS=${*}
@@ -16,20 +17,10 @@ fi
 # export, or we won't be in the build env
 export COOPR_BUILD_PROJECTS
 
-__plugins=$(vagrant plugin list | awk '{print $1}')
-
-# Check for plugins, install if missing
-for __p in vagrant-berkshelf vagrant-omnibus ; do
-  if [[ $(echo ${__plugins} | grep ${__p}) ]]; then
-    echo "Found plugin: ${__p}"
-  else
-    echo "Installing plugin: ${__p}"
-    vagrant plugin install ${__p}
-  fi
-done
-
-echo "Destroying any running VMs..."
-vagrant destroy -f
-
 echo ${__OUTPUT}
-exec vagrant up
+
+bundle install --binstubs
+for proj in ${COOPR_BUILD_PROJECTS}; do
+  bin/omnibus build ${proj}
+  rm -rf /opt/coopr
+done
