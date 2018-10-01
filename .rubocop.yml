@@ -4,6 +4,7 @@ AllCops:
     - config/software/openssl.rb
     - config/software/nodejs.rb
     - config/software/nokogiri.rb
+    - config/software/bzip2.rb
     - bin/*
     - vendor/bundle/**/*
 LineLength:
