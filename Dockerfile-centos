@@ -38,12 +38,12 @@ RUN useradd -m coopr && \
   mkdir -p /var/chef/cookbooks && \
   cd /var/chef/cookbooks && \
   touch .gitignore && git init && git add .gitignore && git commit -m 'Initial commit' && \
-  knife cookbook site download 7-zip 1.0.2 --force && \
+  curl -o 7-zip-1.0.2.tar.gz -L https://supermarket.chef.io/cookbooks/7-zip/download && \
   knife cookbook site download apt 2.4.0 --force && \
   knife cookbook site download ark 0.9.0 --force && \
   knife cookbook site download build-essential 1.4.4 --force && \
-  knife cookbook site download chef_handler 1.1.6 --force && \
-  knife cookbook site download dmg 2.2.0 --force && \
+  curl -o chef_handler-1.1.6.tar.gz -L https://supermarket.chef.io/cookbooks/chef_handler/versions/1.1.6//download && \
+  curl -o dmg-2.2.0.tar.gz -L https://supermarket.chef.io/cookbooks/dmg/versions/2.2.0/download && \
   knife cookbook site download git 3.1.0 --force && \
   knife cookbook site download homebrew 1.9.0 --force && \
   knife cookbook site download java 1.21.2 --force && \
