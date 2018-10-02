@@ -17,5 +17,7 @@ dependency 'preparation'
 # dependency "somedep"
 dependency 'coopr-provisioner'
 
+override :ruby, version: '2.3.7'
+
 exclude "\.git*"
 exclude "bundler\/git"
