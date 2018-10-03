@@ -18,6 +18,7 @@ dependency 'preparation'
 dependency 'coopr-provisioner'
 
 override :ruby, version: '2.3.7'
+override :rubygems, version: '2.4.4'
 
 exclude "\.git*"
 exclude "bundler\/git"
