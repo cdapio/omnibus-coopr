@@ -1,4 +1,4 @@
-# Copyright © 2016-2017 Cask Data, Inc.
+# Copyright © 2016-2018 Cask Data, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 #
 # Cask is a trademark of Cask Data, Inc. All rights reserved.
 
-FROM ubuntu:12.04
+FROM ubuntu:16.04
 MAINTAINER Cask Data <ops@cask.co>
 
 # Copy files
@@ -34,41 +34,31 @@ RUN useradd -m coopr && \
     curl \
     git \
     python2.7 && \
-  curl -vL http://chef.io/chef/install.sh | bash -s -- -v 12.10.24 && \
+  curl -vL http://chef.io/chef/install.sh | bash -s -- -v 12.22.5 && \
   mkdir -p /var/chef/cookbooks && \
   cd /var/chef/cookbooks && \
   touch .gitignore && git init && git add .gitignore && git commit -m 'Initial commit' && \
-  curl -o 7-zip-1.0.2.tar.gz -L https://supermarket.chef.io/cookbooks/7-zip/download && \
-  knife cookbook site download apt 2.4.0 --force && \
-  knife cookbook site download ark 0.9.0 --force && \
-  knife cookbook site download build-essential 1.4.4 --force && \
-  curl -o chef_handler-1.1.6.tar.gz -L https://supermarket.chef.io/cookbooks/chef_handler/versions/1.1.6//download && \
-  curl -o dmg-2.2.0.tar.gz -L https://supermarket.chef.io/cookbooks/dmg/versions/2.2.0/download && \
-  knife cookbook site download git 3.1.0 --force && \
-  knife cookbook site download homebrew 1.9.0 --force && \
-  knife cookbook site download java 1.21.2 --force && \
-  knife cookbook site download maven 1.1.0 --force && \
-  knife cookbook site download ohai 2.0.1 --force && \
-  knife cookbook site download omnibus 1.2.4 --force && \
-  knife cookbook site download pkgin 0.4.0 --force && \
-  knife cookbook site download pkgutil 0.0.3 --force && \
-  knife cookbook site download rbenv 1.7.1 --force && \
-  knife cookbook site download runit 1.5.10 --force && \
-  knife cookbook site download windows 1.34.2 --force && \
-  knife cookbook site download wix 1.1.0 --force && \
-  knife cookbook site download yum 3.2.2 --force && \
-  knife cookbook site download yum-epel 0.4.0 --force && \
+  knife cookbook site download ark 4.0.0 --force && \
+  knife cookbook site download build-essential 8.2.1 --force && \
+  knife cookbook site download chef-ingredient 2.3.2 --force && \
+  knife cookbook site download chef-sugar 4.1.0 --force && \
+  knife cookbook site download git 9.0.1 --force && \
+  knife cookbook site download homebrew 5.0.8 --force && \
+  knife cookbook site download java 2.2.1 --force && \
+  knife cookbook site download maven 5.2.0 --force && \
+  knife cookbook site download mingw 2.1.0 --force && \
+  knife cookbook site download omnibus 5.7.2 --force && \
+  knife cookbook site download remote_install 2.0.0 --force && \
+  knife cookbook site download seven_zip 3.0.0 --force && \
+  knife cookbook site download windows 5.1.1 --force && \
+  knife cookbook site download wix 5.0.0 --force && \
   for tb in *.tar.gz; do tar xf ${tb}; rm -f ${tb}; done && \
   git add . && git commit -m 'Added cookbooks' && \
-  echo "name 'pkgin'" >> pkgin/metadata.rb && \
-  git commit -am "HACK: Add name to pkgin's metadata" && \
-  echo "name 'pkgutil'" >> pkgutil/metadata.rb && \
-  git commit -am "HACK: Add name to pkgutil's metadata" && \
   mkdir -p /var/tmp/coopr-build && \
   chown -R coopr /var/tmp/coopr-build && \
   cd /var/tmp/coopr-build && \
-  chef-solo -j /var/tmp/coopr-build/chef.json -o 'recipe[omnibus],recipe[maven]' && \
-  gem install bundler --no-rdoc --no-ri && \
+  chef-solo -j /var/tmp/coopr-build/chef.json -o 'recipe[omnibus],recipe[java],recipe[maven]' && \
+  export PATH=/opt/omnibus-toolchain/embedded/bin:$PATH && \
   chown -R coopr /opt && \
   su coopr -c "bundle install --binstubs" && \
   su coopr -c "git config --global user.email 'ops@cask.co' && git config --global user.name 'Cask Ops'" && \
