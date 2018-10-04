@@ -60,7 +60,7 @@ RUN useradd -m coopr && \
   chef-solo -j /var/tmp/coopr-build/chef.json -o 'recipe[omnibus],recipe[java],recipe[maven]' && \
   export PATH=/opt/omnibus-toolchain/embedded/bin:$PATH && \
   chown -R coopr /opt && \
-  su coopr -c "bundle install --binstubs" && \
+  su coopr -c "bundle install --without development --binstubs" && \
   su coopr -c "git config --global user.email 'ops@cask.co' && git config --global user.name 'Cask Ops'" && \
   __failed= && \
   for project in ${COOPR_BUILD_PROJECTS}; do \
