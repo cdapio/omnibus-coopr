@@ -39,6 +39,7 @@ RUN useradd -m coopr && \
   curl -vL http://chef.io/chef/install.sh | bash -s -- -v 12.22.5 && \
   mkdir -p /var/chef/cookbooks && \
   cd /var/chef/cookbooks && \
+  git config --global user.email 'ops@cask.co' && git config --global user.name 'Cask Ops' && \
   touch .gitignore && git init && git add .gitignore && git commit -m 'Initial commit' && \
   knife cookbook site download ark 4.0.0 --force && \
   knife cookbook site download build-essential 8.2.1 --force && \
