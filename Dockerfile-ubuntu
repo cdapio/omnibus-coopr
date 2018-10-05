@@ -33,7 +33,6 @@ RUN useradd -m coopr && \
   apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
-    wget \
     git \
     python2.7 && \
   curl -vL http://chef.io/chef/install.sh | bash -s -- -v 12.22.5 && \
@@ -61,13 +60,12 @@ RUN useradd -m coopr && \
   chown -R coopr /var/tmp/coopr-build && \
   cd /var/tmp/coopr-build && \
   chef-solo -j /var/tmp/coopr-build/chef.json -o 'recipe[omnibus],recipe[java],recipe[maven]' && \
-  export PATH=/opt/omnibus-toolchain/embedded/bin:$PATH && \
   chown -R coopr /opt && \
-  su coopr -c "bundle install --without development --binstubs" && \
-  su coopr -c "git config --global user.email 'ops@cask.co' && git config --global user.name 'Cask Ops'" && \
+  su coopr -c ". /home/coopr/load-omnibus-toolchain.sh && bundle install --without development --binstubs" && \
+  su coopr -c ". /home/coopr/load-omnibus-toolchain.sh && git config --global user.email 'ops@cask.co' && git config --global user.name 'Cask Ops'" && \
   __failed= && \
   for project in ${COOPR_BUILD_PROJECTS}; do \
-    su coopr -c "bin/omnibus build ${project}" || __failed+="${project} "; \
+    su coopr -c ". /home/coopr/load-omnibus-toolchain.sh && bin/omnibus build ${project}" || __failed+="${project} "; \
     rm -rf /opt/coopr ; \
   done && \
   if test -n "${__failed}"; then \
