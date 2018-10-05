@@ -10,6 +10,8 @@ build_iteration 1
 # conflict with standalone
 # conflicts 'coopr-standalone'
 
+override :ruby, version: '2.5.1'
+
 # creates required build directories
 dependency 'preparation'
 
