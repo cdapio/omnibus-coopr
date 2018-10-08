@@ -12,6 +12,7 @@ gem 'omnibus-software', github: 'caskdata/omnibus-software'
 # the Test Kitchen-based build lab. You can skip these unnecessary dependencies
 # by running `bundle install --without development` to speed up build times.
 group :development do
+  gem 'rake'
   # Use Rubocop for Lint checking of this repo
   gem 'rubocop'
 
