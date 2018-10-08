@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/chef/omnibus-software.git
-  revision: 8e69931190ce86dc3f6e1644127790638a954007
+  remote: git://github.com/caskdata/omnibus-software.git
+  revision: 67a458d2e8a55b267fe0b47f6e1ec9c01e097137
   specs:
     omnibus-software (4.0.0)
       chef-sugar (>= 3.4.0)
@@ -10,6 +10,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.8)
+    ast (2.4.0)
     awesome_print (1.8.0)
     aws-sdk (2.11.143)
       aws-sdk-resources (= 2.11.143)
@@ -82,6 +83,7 @@ GEM
     httpclient (2.6.0.1)
     iostruct (0.0.4)
     ipaddress (0.8.3)
+    jaro_winkler (1.5.1)
     jmespath (1.4.0)
     json (2.1.0)
     kitchen-vagrant (0.21.1)
@@ -142,6 +144,9 @@ GEM
       pedump
       ruby-progressbar (~> 1.7)
       thor (~> 0.18)
+    parallel (1.12.1)
+    parser (2.5.1.2)
+      ast (~> 2.4.0)
     pedump (0.5.2)
       awesome_print
       iostruct (>= 0.0.4)
@@ -149,7 +154,10 @@ GEM
       progressbar
       zhexdump (>= 0.0.2)
     plist (3.4.0)
+    powerpack (0.1.2)
     progressbar (1.10.0)
+    rainbow (3.0.0)
+    rake (12.3.1)
     retryable (2.0.4)
     ridley (4.4.2)
       addressable
@@ -169,6 +177,14 @@ GEM
       retryable (~> 2.0)
       semverse (~> 1.1)
       varia_model (~> 0.4.0)
+    rubocop (0.59.2)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.5, != 2.5.1.1)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.10.0)
     rubyntlm (0.6.2)
     rubyzip (1.2.2)
@@ -196,6 +212,7 @@ GEM
     toml-rb (1.1.2)
       citrus (~> 3.0, > 3.0)
     tomlrb (1.2.7)
+    unicode-display_width (1.4.0)
     varia_model (0.4.1)
       buff-extensions (~> 1.0)
       hashie (>= 2.0.2, < 4.0.0)
@@ -227,8 +244,9 @@ DEPENDENCIES
   kitchen-vagrant (~> 0.18)
   omnibus (~> 6.0)
   omnibus-software!
+  rake
+  rubocop
   test-kitchen (~> 1.4)
 
 BUNDLED WITH
    1.16.2
-
