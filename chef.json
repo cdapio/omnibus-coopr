@@ -3,5 +3,13 @@
     "build_user": "coopr",
     "build_dir": "/var/tmp/coopr-build",
     "install_dir": "/opt/coopr"
+  },
+  "java": {
+    "jdk_version": "7"
+  },
+  "maven": {
+    "setup_bin": true,
+    "version": "3.1.1",
+    "checksum": "077ed466455991d5abb4748a1d022e2d2a54dc4d557c723ecbacdc857c61d51b"
   }
 }

@@ -1,5 +1,5 @@
 name 'coopr-provisioner'
-default_version 'develop'
+default_version 'feature/ruby-2.0'
 
 dependency 'ruby'
 dependency 'rubygems'
@@ -14,5 +14,4 @@ build do
   copy "#{project_dir}/*", install_dir
   command "chmod +x #{install_dir}/bin/*"
   command "find #{install_dir} -type f -name .gitkeep | xargs rm -f"
-  gem 'uninstall -Ix rdoc'
 end

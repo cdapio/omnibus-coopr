@@ -1,5 +1,5 @@
 #!/usr/bin/env rake
-# encoding: UTF-8
+
 #
 # Copyright © 2015 Cask Data, Inc.
 #
@@ -22,4 +22,4 @@ task :rubocop do
   sh 'rubocop -D'
 end
 
-task :default => %w(rubocop)
+task :default => %w[rubocop]

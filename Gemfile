@@ -1,22 +1,25 @@
 source 'https://rubygems.org'
 
+# Install omnibus
+gem 'omnibus', '~> 6.0'
+
+# Use Chef's software definitions. It is recommended that you write your own
+# software definitions, but you can clone/fork Chef's to get you started.
+gem 'omnibus-software', github: 'caskdata/omnibus-software'
+
+# This development group is installed by default when you run `bundle install`,
+# but if you are using Omnibus in a CI-based infrastructure, you do not need
+# the Test Kitchen-based build lab. You can skip these unnecessary dependencies
+# by running `bundle install --without development` to speed up build times.
 group :development do
   gem 'rake'
+  # Use Rubocop for Lint checking of this repo
   gem 'rubocop'
+
+  # Use Berkshelf for resolving cookbook dependencies
+  gem 'berkshelf', '~> 3.3'
+
+  # Use Test Kitchen with Vagrant for converging the build environment
+  gem 'kitchen-vagrant', '~> 0.18'
+  gem 'test-kitchen',    '~> 1.4'
 end
-
-# Use Berkshelf for resolving cookbook dependencies
-gem 'hashie', '< 3.0'
-gem 'varia_model', '< 0.5'
-gem 'buff-ignore', '< 1.2'
-gem 'json', '< 2.0'
-gem 'net-ssh', '~> 2.6'
-gem 'dep_selector', '< 1.0.4'
-gem 'nio4r', '< 2.0'
-
-# Install omnibus software
-gem 'omnibus', '~> 3.1'
-gem 'omnibus-software', github: 'opscode/omnibus-software', ref: 'omnibus/3.2-stable'
-
-# Use Test Kitchen with Vagrant for converging the build environment
-gem 'test-kitchen', '~> 1.2'
