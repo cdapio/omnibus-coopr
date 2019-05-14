@@ -1,6 +1,6 @@
 name 'coopr-ui'
 maintainer 'Cask'
-homepage 'http://github.com/caskdata/coopr'
+homepage 'http://github.com/cdapio/coopr'
 
 install_dir '/opt/coopr/ui'
 

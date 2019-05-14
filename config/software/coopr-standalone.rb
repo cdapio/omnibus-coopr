@@ -1,7 +1,7 @@
 name 'coopr-standalone'
 default_version 'develop'
 
-source :git => 'git://github.com/caskdata/coopr.git'
+source :git => 'git://github.com/cdapio/coopr.git'
 relative_path 'coopr-standalone'
 
 build do

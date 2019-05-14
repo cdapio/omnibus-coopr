@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/caskdata/omnibus-software.git
+  remote: git://github.com/cdapio/omnibus-software.git
   revision: 67a458d2e8a55b267fe0b47f6e1ec9c01e097137
   specs:
     omnibus-software (4.0.0)

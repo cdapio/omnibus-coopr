@@ -5,7 +5,7 @@ gem 'omnibus', '~> 6.0'
 
 # Use Chef's software definitions. It is recommended that you write your own
 # software definitions, but you can clone/fork Chef's to get you started.
-gem 'omnibus-software', github: 'caskdata/omnibus-software'
+gem 'omnibus-software', github: 'cdapio/omnibus-software'
 
 # This development group is installed by default when you run `bundle install`,
 # but if you are using Omnibus in a CI-based infrastructure, you do not need
