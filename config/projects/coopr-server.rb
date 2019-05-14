@@ -1,6 +1,6 @@
 name 'coopr-server'
 maintainer 'Cask'
-homepage 'http://github.com/caskdata/coopr'
+homepage 'http://github.com/cdapio/coopr'
 
 install_dir '/opt/coopr/server'
 

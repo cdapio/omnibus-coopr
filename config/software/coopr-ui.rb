@@ -3,7 +3,7 @@ default_version 'develop'
 
 dependency 'nodejs'
 
-source :git => 'git://github.com/caskdata/coopr.git'
+source :git => 'git://github.com/cdapio/coopr.git'
 relative_path 'coopr-ui'
 
 npm = "#{install_dir}/embedded/bin/npm"

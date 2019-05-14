@@ -5,7 +5,7 @@ dependency 'ruby'
 dependency 'rubygems'
 dependency 'bundler'
 
-source :git => 'git://github.com/caskdata/coopr-provisioner.git'
+source :git => 'git://github.com/cdapio/coopr-provisioner.git'
 # relative_path 'coopr-provisioner'
 
 build do
